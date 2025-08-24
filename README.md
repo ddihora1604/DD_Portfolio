@@ -2,7 +2,7 @@
 
 <div align="center">
   
-[![🌐 View Live Portfolio](https://img.shields.io/badge/🌐_View_Live_Portfolio-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=1a1a1a&color=gradient)](https://ddportfolio-six.vercel.app/)
+[![🚀 VIEW LIVE PORTFOLIO](https://img.shields.io/badge/🚀_VIEW_LIVE_PORTFOLIO-00D9FF?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0a0a0a&color=00D9FF)](https://ddportfolio-six.vercel.app/)
 
 </div>
 
