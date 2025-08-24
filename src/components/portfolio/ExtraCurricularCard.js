@@ -44,7 +44,7 @@ export default function ExtraCurricularCard({ activity, index }) {
         </div>
         
         <div className="space-y-3">
-          {activity.description.map((desc, i) => (
+          {activity.skills && activity.skills.map((skill, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -54,7 +54,7 @@ export default function ExtraCurricularCard({ activity, index }) {
               className="flex items-start gap-3"
             >
               <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0" />
-              <p className="text-white/70 leading-relaxed">{desc}</p>
+              <p className="text-white/70 leading-relaxed">{skill}</p>
             </motion.div>
           ))}
         </div>

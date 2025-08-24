@@ -19,17 +19,17 @@ import ProjectCard from "../components/portfolio/ProjectCard";
 import { createFadeInAnimation, createScaleAnimation, createTextRevealAnimation, createSlideInAnimation, createMagneticEffect, createFloatingAnimation, createTimelineAnimation } from "../utils/animations";
 import lenis from "../utils/lenis";
 
-// Use public folder images for better compatibility
-const RFGLogo = "/RFG.png";
-const NSDCLogo = "/NSDC.png";
-const LokSabhaLogo = "/Lok Sabha.png";
-const TedxLogo = "/Tedx.png";
-const TrinityLogo = "/Trinity.png";
-const CodestarsLogo = "/Codestars.png";
-const GDSCLogo = "/GDSC.png";
-const NOVALogo = "/NOVA.png";
-const IITKLogo = "/IITK.png";
-const IITPLogo = "/IITP.png";
+// Import all logo images directly
+import RFGLogo from "../assets/images/RFG.png";
+import NSDCLogo from "../assets/images/NSDC.png";
+import LokSabhaLogo from "../assets/images/LokSabha.png";
+import TedxLogo from "../assets/images/Tedx.png";
+import TrinityLogo from "../assets/images/Trinity.png";
+import CodestarsLogo from "../assets/images/Codestars.png";
+import GDSCLogo from "../assets/images/GDSC.png";
+import NOVALogo from "../assets/images/NOVA.png";
+import IITKLogo from "../assets/images/IITK.png";
+import IITPLogo from "../assets/images/IITP.png";
 
 const projects = [
   {
@@ -536,12 +536,12 @@ export default function Portfolio() {
                             <motion.div 
                               whileHover={{ scale: 1.1, rotate: 5 }}
                               transition={{ duration: 0.6 }}
-                              className="w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg border border-white/20 flex-shrink-0"
+                              className="w-28 h-28 sm:w-32 sm:h-32 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg border border-white/20 flex-shrink-0"
                             >
                               <img 
                                 src={index === 0 ? IITKLogo : IITPLogo}
                                 alt={`${index === 0 ? 'IIT Kharagpur' : 'IIT Patna'} logo`}
-                                className="w-16 h-16 object-contain filter brightness-110"
+                                className="w-20 h-20 sm:w-24 sm:h-24 object-contain filter brightness-110"
                               />
                             </motion.div>
                             
@@ -820,7 +820,7 @@ export default function Portfolio() {
                             <div className="flex items-start justify-between mb-6">
                               <div className="flex items-start space-x-5 flex-1 min-w-0">
                                 <motion.div 
-                                  className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 flex-shrink-0 p-2 sm:p-3 shadow-lg"
+                                  className="relative w-28 h-28 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 flex-shrink-0 p-3 sm:p-4 shadow-lg"
                                   whileHover={{ scale: 1.1, rotate: 3, boxShadow: "0 12px 30px rgba(59, 130, 246, 0.25)" }}
                                   transition={{ duration: 0.3 }}
                                 >
