@@ -47,7 +47,7 @@ export default function LoadingScreen() {
           transition={{ duration: 1, delay: 0.3 }}
           className="space-y-4"
         >
-          <p className="text-white/70 text-lg">Loading Experience</p>
+          <p className="text-white/70 text-lg">Loading your Portfolio</p>
           
           <div className="w-80 h-1 bg-white/10 rounded-full overflow-hidden mx-auto">
             <motion.div

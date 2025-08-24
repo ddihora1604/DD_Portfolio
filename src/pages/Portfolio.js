@@ -5,7 +5,12 @@ import {
   ArrowRight,
   Mail, 
   Github, 
-  Linkedin
+  Linkedin,
+  Briefcase,
+  Building,
+  Calendar,
+  MapPin,
+  Award
 } from "lucide-react";
 
 import LoadingScreen from "../components/portfolio/LoadingScreen";
@@ -13,6 +18,8 @@ import ProjectCard from "../components/portfolio/ProjectCard";
 import ContactForm from "../components/portfolio/ContactForm";
 import ExperienceCard from "../components/portfolio/ExperienceCard";
 import ExtraCurricularCard from "../components/portfolio/ExtraCurricularCard";
+import { createFadeInAnimation, createScaleAnimation, createTextRevealAnimation, createSlideInAnimation, createMagneticEffect, createFloatingAnimation, createTimelineAnimation } from "../utils/animations";
+import lenis from "../utils/lenis";
 
 const projects = [
   {
@@ -152,10 +159,53 @@ export default function Portfolio() {
     };
   }, []);
 
+  // Initialize animations after loading is complete
+  useEffect(() => {
+    if (!isLoading) {
+      // Add delay to ensure DOM is ready
+      setTimeout(() => {
+        // Enhanced fade-in animations for sections
+        createFadeInAnimation('.animate-section', { duration: 1.8, y: 100, stagger: 0.2 });
+        
+        // Advanced scale animations for cards with bounce effect
+        createScaleAnimation('.animate-card', { scale: 0.6, duration: 1.5 });
+        
+        // Enhanced text reveal animations
+        createTextRevealAnimation('.animate-text');
+        
+        // Slide-in animations for navigation
+        createSlideInAnimation('.animate-nav', 'top', { duration: 1.2 });
+        
+        // Enhanced hero animations with more dramatic effect
+        createFadeInAnimation('.animate-hero', { 
+          duration: 2.0, 
+          y: 120, 
+          stagger: 0.25,
+          ease: "power4.out"
+        });
+
+        // Slide-in animations for different elements
+        createSlideInAnimation('.animate-slide-left', 'left', { duration: 1.4 });
+        createSlideInAnimation('.animate-slide-right', 'right', { duration: 1.4 });
+        createSlideInAnimation('.animate-slide-up', 'bottom', { duration: 1.6 });
+
+        // Magnetic effects for interactive elements
+        createMagneticEffect('.animate-magnetic');
+
+        // Floating animation for special elements
+        createFloatingAnimation('.animate-float');
+
+        // Timeline animation for experience section
+        createTimelineAnimation('#experience');
+        
+      }, 150);
+    }
+  }, [isLoading]);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      lenis.scrollTo(element, { duration: 2.0, easing: (t) => 1 - Math.pow(1 - t, 4) });
     }
   };
 
@@ -171,15 +221,15 @@ export default function Portfolio() {
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="fixed top-0 left-0 right-0 z-50 p-6"
+            className="fixed top-0 left-0 right-0 z-50 p-6 animate-nav"
           >
             <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
-              <motion.div
-                className="text-2xl font-bold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent"
+              {/* <motion.div
+                className="text-2xl font-bold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent animate-float"
                 whileHover={{ scale: 1.05 }}
               >
                 DARSHAN
-              </motion.div>
+              </motion.div> */}
               
               <div className="hidden md:flex items-center space-x-8">
                 {['Home', 'About', 'Experience', 'Projects', 'Extra-Curriculars', 'Contact'].map((item) => (
@@ -201,13 +251,13 @@ export default function Portfolio() {
           </motion.nav>
 
           {/* Hero Section */}
-          <section id="home" className="min-h-screen flex items-center justify-center relative text-center">
+          <section id="home" className="min-h-screen flex items-center justify-center relative text-center animate-section">
             <div className="container mx-auto px-6 flex flex-col items-center">
               <motion.div
                 initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
                 animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                 transition={{ duration: 1.2, delay: 0.2 }}
-                className="space-y-6"
+                className="space-y-6 animate-hero"
               >
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                   Hi, I'm <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Darshan
@@ -215,18 +265,17 @@ export default function Portfolio() {
                 </h1>
                 
                 <h2 className="text-3xl md:text-4xl text-white/80">
-                  — AI Enthusiast
+                  AI Enthusiast
                 </h2>
                 
                 <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                  Crafting digital experiences that inspire and engage through
-                  innovative design and cutting-edge technology.
+                  Dedicated to learning and exploring in the world of business and technology!
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                   <motion.button
                     onClick={() => scrollToSection('projects')}
-                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-semibold flex items-center gap-2"
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-semibold flex items-center gap-2 animate-magnetic"
                     whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(99, 102, 241, 0.5)" }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -235,7 +284,7 @@ export default function Portfolio() {
                   
                   <motion.button
                     onClick={() => scrollToSection('contact')}
-                    className="px-8 py-3 border border-white/40 rounded-lg text-white font-semibold backdrop-blur-sm hover:border-white transition-all duration-300"
+                    className="px-8 py-3 border border-white/40 rounded-lg text-white font-semibold backdrop-blur-sm hover:border-white transition-all duration-300 animate-magnetic"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
@@ -246,7 +295,7 @@ export default function Portfolio() {
             </div>
             
             <motion.div
-              className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float"
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity, delay: 2 }}
             >
@@ -255,17 +304,17 @@ export default function Portfolio() {
           </section>
 
           {/* About Section */}
-          <section id="about" className="min-h-screen flex items-center justify-center py-20 bg-black/40 backdrop-blur-sm">
+          <section id="about" className="min-h-screen flex items-center justify-center py-20 bg-black/40 backdrop-blur-sm animate-section">
             <div className="container mx-auto px-6">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                className="grid lg:grid-cols-2 gap-16 items-center"
+                className="grid lg:grid-cols-2 gap-16 items-center animate-text"
               >
                 <motion.div
-                  className="relative"
+                  className="relative animate-slide-left animate-float"
                   whileHover={{ scale: 1.02, rotateY: 5 }}
                   transition={{ duration: 0.6 }}
                 >
@@ -281,21 +330,22 @@ export default function Portfolio() {
                   </div>
                 </motion.div>
                 
-                <div className="space-y-8">
+                <div className="space-y-8 animate-slide-right">
                   <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.2 }}
+                    className="animate-magnetic"
                   >
                     <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                       About <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Me</span>
                     </h2>
                     <p className="text-lg text-white/70 leading-relaxed mb-4">
-                      I'm a passionate B.Tech student in Artificial Intelligence and Data Science at SVKM's Dwarkadas J. Sanghvi College of Engineering, Mumbai, with a CGPA of 9.37.
+                      I'm a passionate B.Tech student specializing in Artificial Intelligence (AI) and Data Science, with a minor in IoT and Industry 4.0.
                     </p>
                     <p className="text-lg text-white/70 leading-relaxed mb-8">
-                      I specialize in creating cutting-edge AI solutions, from legal tech platforms to crop disease detection systems. My expertise spans across machine learning, deep learning, natural language processing, and full-stack development.
+                      I specialize in creating cutting-edge AI solutions, while actively building skills in AI, ML, data science, finance, UI/UX design, and web development.
                     </p>
                   </motion.div>
                   
@@ -305,12 +355,6 @@ export default function Portfolio() {
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.4 }}
                   >
-                    <h3 className="text-2xl font-semibold mb-6 text-blue-400">Education</h3>
-                    <div className="bg-white/5 p-4 rounded-xl border border-white/10">
-                      <h4 className="font-semibold text-white">B.Tech in Artificial Intelligence and Data Science</h4>
-                      <p className="text-white/70">SVKM's Dwarkadas J. Sanghvi College of Engineering</p>
-                      <p className="text-white/60 text-sm">CGPA: 9.37 | November 2022 - June 2026</p>
-                    </div>
                   </motion.div>
                 </div>
               </motion.div>
@@ -318,44 +362,223 @@ export default function Portfolio() {
           </section>
 
           {/* Experience Section */}
-          <section id="experience" className="min-h-screen py-20 bg-black/40 backdrop-blur-sm">
-            <div className="container mx-auto px-6">
+          <section id="experience" className="py-32 bg-gradient-to-b from-black/40 via-gray-900/50 to-black/40 backdrop-blur-sm animate-section relative overflow-hidden">
+            {/* Background decorative elements */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse" />
+              <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl animate-pulse" />
+            </div>
+            
+            <div className="container mx-auto px-6 relative z-10">
+              {/* Enhanced Section Header */}
               <motion.div
+                initial={{ opacity: 0, y: 80 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+                className="text-center mb-20 animate-text"
+              >
+                <motion.div
+                  className="inline-block mb-4"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <span className="px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full text-blue-300 text-sm font-medium border border-blue-500/30">
+                    Professional Journey
+                  </span>
+                </motion.div>
+                
+                <h2 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                  My <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Experience</span>
+                </h2>
+                
+                <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+                  Research and development journey at premier Indian institutes, 
+                  driving innovation in AI, machine learning, and data science
+                </p>
+                
+                {/* Animated underline */}
+                <motion.div
+                  className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mx-auto mt-8"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: 96 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                />
+              </motion.div>
+              
+              {/* Timeline Container */}
+              <div className="relative max-w-6xl mx-auto">
+                {/* Parallel Experiences Layout */}
+                <div className="text-center mb-12">
+                  <motion.div
+                    className="inline-block px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-blue-500/30"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <span className="text-blue-300 text-sm font-medium">Concurrent Research Positions • 2025</span>
+                  </motion.div>
+                </div>
+
+                {/* Parallel Cards Container */}
+                <div className="grid md:grid-cols-2 gap-8 mb-16">
+                  {experiences.map((experience, index) => (
+                    <motion.div
+                      key={experience.id}
+                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ 
+                        duration: 0.8, 
+                        delay: index * 0.2,
+                        ease: [0.25, 0.1, 0.25, 1]
+                      }}
+                      className="relative"
+                    >
+                      {/* Connection line between cards */}
+                      {index === 0 && (
+                        <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 z-10" />
+                      )}
+                      
+                      {/* Experience Card */}
+                      <motion.div
+                        whileHover={{ 
+                          scale: 1.02, 
+                          y: -5,
+                          boxShadow: "0 20px 40px rgba(59, 130, 246, 0.15)"
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 group overflow-hidden h-full"
+                      >
+                        {/* Animated background gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        {/* Floating orbs */}
+                        <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+                        <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-400/15 to-pink-500/15 rounded-full blur-lg group-hover:scale-125 transition-transform duration-700" />
+                        
+                        <div className="relative z-10">
+                          {/* Header */}
+                          <div className="flex items-start gap-4 mb-6">
+                            <motion.div 
+                              whileHover={{ rotate: 360, scale: 1.1 }}
+                              transition={{ duration: 0.6 }}
+                              className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/30"
+                            >
+                              <Briefcase className="w-7 h-7 text-white" />
+                            </motion.div>
+                            
+                            <div className="flex-1">
+                              <motion.h3 
+                                className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300"
+                                whileHover={{ x: 5 }}
+                              >
+                                {experience.title}
+                              </motion.h3>
+                              
+                              <motion.div 
+                                className="flex items-center gap-2 mb-3"
+                                whileHover={{ x: 5 }}
+                              >
+                                <Building className="w-4 h-4 text-blue-400" />
+                                <h4 className="text-blue-400 font-semibold text-sm">{experience.company}</h4>
+                              </motion.div>
+                              
+                              <div className="flex flex-col gap-2 text-white/70">
+                                <motion.div 
+                                  className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full"
+                                  whileHover={{ scale: 1.05, backgroundColor: "rgba(59, 130, 246, 0.1)" }}
+                                >
+                                  <Calendar className="w-3 h-3 text-blue-400" />
+                                  <span className="text-xs font-medium">{experience.duration}</span>
+                                </motion.div>
+                                
+                                <motion.div 
+                                  className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full"
+                                  whileHover={{ scale: 1.05, backgroundColor: "rgba(168, 85, 247, 0.1)" }}
+                                >
+                                  <MapPin className="w-3 h-3 text-purple-400" />
+                                  <span className="text-xs font-medium">{experience.location}</span>
+                                </motion.div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          {/* Description */}
+                          <div className="space-y-3">
+                            {experience.description.map((desc, i) => (
+                              <motion.div
+                                key={i}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.1 * i }}
+                                whileHover={{ x: 5 }}
+                                className="group/item"
+                              >
+                                <div className="flex items-start gap-3 p-3 rounded-xl bg-gradient-to-r from-white/5 to-transparent hover:from-blue-500/10 hover:to-purple-500/5 transition-all duration-300">
+                                  <motion.div 
+                                    className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mt-2 flex-shrink-0 shadow-lg shadow-blue-400/50"
+                                    whileHover={{ scale: 1.5 }}
+                                  />
+                                  <p className="text-white/80 leading-relaxed text-sm group-hover/item:text-white transition-colors duration-300">
+                                    {desc}
+                                  </p>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                          
+                          {/* Institute badge */}
+                          <motion.div
+                            className="mt-4 flex items-center gap-2 text-yellow-400/80"
+                            initial={{ opacity: 0, scale: 0 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            <Award className="w-4 h-4" />
+                            <span className="text-xs font-medium">
+                              {index === 0 ? 'IIT Kharagpur' : 'IIT Patna'}
+                            </span>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              
+              {/* Bottom CTA */}
+              <motion.div
+                className="text-center mt-20"
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1 }}
-                className="text-center mb-16"
+                transition={{ duration: 1, delay: 0.5 }}
               >
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Experience</span>
-                </h2>
-                <p className="text-lg text-white/70 max-w-2xl mx-auto">
-                  Research and development experience at premier Indian institutes
-                </p>
+                <motion.div
+                  className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full border border-white/10 backdrop-blur-sm animate-magnetic"
+                  whileHover={{ scale: 1.05, backgroundColor: "rgba(59, 130, 246, 0.15)" }}
+                >
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                  <span className="text-white/80 font-medium">Currently researching at IIT Kharagpur</span>
+                </motion.div>
               </motion.div>
-              
-              <div className="max-w-4xl mx-auto space-y-8">
-                {experiences.map((experience, index) => (
-                  <ExperienceCard
-                    key={experience.id}
-                    experience={experience}
-                    index={index}
-                  />
-                ))}
-              </div>
             </div>
           </section>
 
           {/* Projects Section */}
-          <section id="projects" className="min-h-screen py-20 bg-black/40 backdrop-blur-sm">
+          <section id="projects" className="min-h-screen py-20 bg-black/40 backdrop-blur-sm animate-section">
             <div className="container mx-auto px-6">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
-                className="text-center mb-16"
+                className="text-center mb-16 animate-text"
               >
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6">
                   Featured <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Projects</span>
@@ -367,11 +590,12 @@ export default function Portfolio() {
               
               <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {projects.map((project, index) => (
-                  <ProjectCard
-                    key={project.id}
-                    project={project}
-                    index={index}
-                  />
+                  <div key={project.id} className="animate-card animate-magnetic">
+                    <ProjectCard
+                      project={project}
+                      index={index}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
@@ -444,25 +668,26 @@ export default function Portfolio() {
               
               <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
                 {extraCurriculars.map((activity, index) => (
-                  <ExtraCurricularCard
-                    key={activity.id}
-                    activity={activity}
-                    index={index}
-                  />
+                  <div key={activity.id} className="animate-card animate-slide-up animate-magnetic">
+                    <ExtraCurricularCard
+                      activity={activity}
+                      index={index}
+                    />
+                  </div>
                 ))}
               </div>
             </div>
           </section>
 
           {/* Contact Section */}
-          <section id="contact" className="min-h-screen flex items-center justify-center py-20 bg-black/40 backdrop-blur-sm">
+          <section id="contact" className="min-h-screen flex items-center justify-center py-20 bg-black/40 backdrop-blur-sm animate-section">
             <div className="container mx-auto px-6">
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1 }}
-                className="max-w-4xl mx-auto"
+                className="max-w-4xl mx-auto animate-text"
               >
                 <div className="text-center mb-16">
                   <h2 className="text-4xl lg:text-5xl font-bold mb-6">
