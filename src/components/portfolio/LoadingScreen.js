@@ -103,7 +103,7 @@ export default function LoadingScreen() {
             <AnimatePresence>
               {showCloudMessage && (
                 <motion.div
-                  className="absolute top-1 left-2/4 transform -translate-x-1/4 z-20"
+                  className="absolute top-1 left-1/2 transform -translate-x-1/4 z-20"
                   initial={{ 
                     opacity: 0, 
                     scale: 0.3,

@@ -15,8 +15,20 @@ export default function ExtraCurricularCard({ activity, index }) {
       
       <div className="relative">
         <div className="flex items-start gap-4 mb-6">
-          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
-            <Award className="w-6 h-6 text-white" />
+          <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center overflow-hidden p-1.5 flex-shrink-0">
+            {activity.logo ? (
+              <img 
+                src={activity.logo} 
+                alt={`${activity.organization} logo`}
+                className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                style={{
+                  imageRendering: 'crisp-edges'
+                }}
+                loading="lazy"
+              />
+            ) : (
+              <Award className="w-6 h-6 text-white" />
+            )}
           </div>
           <div className="flex-1">
             <h3 className="text-xl font-bold text-white mb-1">{activity.title}</h3>
