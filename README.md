@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Darshan Dihora - AI Enthusiast Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  
+[![🌐 View Live Portfolio](https://img.shields.io/badge/🌐_View_Live_Portfolio-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white&labelColor=1a1a1a&color=gradient)](https://ddportfolio-six.vercel.app/)
 
-## Available Scripts
+</div>
 
-In the project directory, you can run:
+A modern, futuristic, and interactive portfolio website showcasing my journey as an AI enthusiast, researcher, and developer. Built with React and enhanced with smooth animations and 3D elements.
 
-### `npm start`
+## Portfolio Sections
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 🏠 **Home**
+Interactive landing page featuring a dynamic Spline 3D embed that creates an immersive visual experience, complemented by smooth scroll animations powered by Lenis.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 👨‍💻 **About**
+Personal introduction highlighting my passion for AI, business, and technology, along with my academic background and career aspirations.
 
-### `npm test`
+### 💼 **Experience**
+Professional timeline showcasing my research internships at prestigious institutions:
+- **IIT Kharagpur** - Research Intern (ESG metrics analysis and ML model training)
+- **IIT Patna** - AI/ML Intern (Advanced ML and deep learning implementations)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🚀 **Projects**
+Featured portfolio projects demonstrating expertise in AI/ML:
+- **NyayMitra** - AI-driven legal service platform
+- **ReddIQ** - Social media analysis dashboard
+- **Agenix** - AI agent marketplace
+- **GreenGuard** - AI-powered crop disease detection
 
-### `npm run build`
+### 🛠️ **Skills**
+Comprehensive display of technical competencies organized by categories:
+- Programming Languages (Python, JavaScript, C++, SQL, HTML, CSS)
+- Frameworks & Tools (React.js, Next.js, Flask, LangChain, Streamlit)
+- Specializations (AI/ML, Deep Learning, NLP, Computer Vision, Generative AI, Data Analysis)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🎯 **Extra-Curricular Activities**
+Timeline of leadership roles and community involvement across various organizations:
+- RFG LABS, DJS-NSDC, DJSCE Lok Sabha, TEDx DJSCE, DJSCE Trinity, DJS CodeStars, Google Developer Student Club DJSCE, DJS Nova
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 📞 **Contact**
+Interactive contact section with social media links and professional networking profiles.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technical Features
 
-### `npm run eject`
+- **Smooth Scrolling**: Implemented using Lenis for fluid navigation experience
+- **3D Elements**: Spline embeds for interactive visual storytelling
+- **Responsive Design**: Optimized for all device sizes
+- **Motion Animations**: Framer Motion for engaging micro-interactions
+- **Modern UI**: Glass-morphism design with gradient accents
+- **Performance Optimized**: Fast loading with optimized assets
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*Dedicated to learning and exploring in the world of business and technology!*
