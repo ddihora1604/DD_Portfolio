@@ -6,6 +6,8 @@ import {
   Mail, 
   Github, 
   Linkedin,
+  Instagram,
+  Twitter,
   Briefcase,
   Building,
   Calendar,
@@ -15,9 +17,6 @@ import {
 
 import LoadingScreen from "../components/portfolio/LoadingScreen";
 import ProjectCard from "../components/portfolio/ProjectCard";
-import ContactForm from "../components/portfolio/ContactForm";
-import ExperienceCard from "../components/portfolio/ExperienceCard";
-import ExtraCurricularCard from "../components/portfolio/ExtraCurricularCard";
 import { createFadeInAnimation, createScaleAnimation, createTextRevealAnimation, createSlideInAnimation, createMagneticEffect, createFloatingAnimation, createTimelineAnimation } from "../utils/animations";
 import lenis from "../utils/lenis";
 
@@ -91,23 +90,91 @@ const experiences = [
 const extraCurriculars = [
   {
     id: 1,
-    title: "Management Head",
-    organization: "DJS NSDC",
-    duration: "May 2024 – May 2025",
-    description: [
-      "Organized Nexus Kaggle Competition and Technograd 2.0 to promote advancements in AI and DS.",
-      "Organized Synergy 2.0, a Buildathon based on domains like AI in Fintech, Social Cause, Social Media, Cybersecurity, and Healthcare."
-    ]
+    title: "Founding Member and Lead Researcher",
+    organization: "RFG LABS",
+    type: "Freelance",
+    duration: "Jun 2024 - May 2025",
+    location: "Mumbai, Maharashtra, India",
+    workType: "Hybrid",
+    skills: ["Research and Development (R&D)", "Technological Innovation", "Statistical Data Analysis", "Market Research"],
+    logo: require("../assets/images/RFG.png")
   },
   {
     id: 2,
+    title: "Management Head",
+    organization: "DJS-NSDC",
+    type: "Full-time",
+    duration: "May 2024 - May 2025",
+    location: "Mumbai, Maharashtra, India",
+    workType: "Hybrid",
+    skills: ["Event Management", "Executing Events", "Managing Finance", "Team Coordination", "Resource Management"],
+    logo: require("../assets/images/NSDC.png")
+  },
+  {
+    id: 3,
+    title: "Student Representative",
+    organization: "DJSCE Lok Sabha",
+    type: "Part-time",
+    duration: "May 2024 - May 2024",
+    location: "Mumbai, Maharashtra, India",
+    workType: "Remote",
+    skills: ["Political Campaigns", "Community Outreach", "Social Promotion", "Relationship Building", "Public Administration"],
+    logo: require("../assets/images/Lok Sabha.png")
+  },
+  {
+    id: 4,
     title: "Event Manager",
-    organization: "GDSC DJSCE and TEDxDJSCE",
-    duration: "September 2023 – May 2024",
-    description: [
-      "Managed and coordinated technical events and workshops for the Google Developer Student Club.",
-      "Organized TEDx events to promote innovation and knowledge sharing among students."
-    ]
+    organization: "TEDx DJSCE",
+    type: "Full-time",
+    duration: "Feb 2024 - May 2024",
+    location: "Mumbai, Maharashtra, India",
+    workType: "On-site",
+    skills: ["Event Management", "Event Planning", "Live Events", "Executive Management", "Team Management"],
+    logo: require("../assets/images/Tedx.png")
+  },
+  {
+    id: 5,
+    title: "Public Relations and Media Specialist",
+    organization: "DJSCE Trinity",
+    type: "Full-time",
+    duration: "Jan 2024 - May 2024",
+    location: "Mumbai, Maharashtra, India",
+    workType: "On-site",
+    skills: ["Public Relations", "Strategic Public Relations Planning", "Social Media Communications", "Media managing", "Event Photography"],
+    logo: require("../assets/images/Trinity.png")
+  },
+  {
+    id: 6,
+    title: "Publicity Assistant",
+    organization: "DJS CodeStars",
+    type: "Full-time",
+    duration: "Nov 2023 - May 2024",
+    location: "Mumbai, Maharashtra, India",
+    workType: "Hybrid",
+    skills: ["Public Relations", "Strategic Public Relations Planning", "Interpersonal Communication", "Public Administration"],
+    logo: require("../assets/images/Codestars.png")
+  },
+  {
+    id: 7,
+    title: "Event Manager",
+    organization: "Google Developer Student Club DJSCE",
+    type: "Full-time",
+    duration: "Sep 2023 - May 2024",
+    location: "Mumbai, Maharashtra, India",
+    workType: "On-site",
+    skills: ["Event Management", "Executing Events", "Strategic Communications", "Performance Management", "Resource Management"],
+    logo: require("../assets/images/GDSC.png")
+  },
+  {
+    id: 8,
+    title: "Marketing And Public Relations Specialist",
+    organization: "DJS Nova",
+    type: "Full-time",
+    duration: "Sep 2023 - May 2024",
+    location: "Mumbai, Maharashtra, India",
+    workType: "Hybrid",
+    skills: ["Marketing Strategy", "Marketing Management", "Sponsorship Relations", "Public Relations", "Strategic Public Relations Planning"],
+    logo: require("../assets/images/NOVA.png")
   }
 ];
 
@@ -175,14 +242,6 @@ export default function Portfolio() {
         
         // Slide-in animations for navigation
         createSlideInAnimation('.animate-nav', 'top', { duration: 1.2 });
-        
-        // Enhanced hero animations with more dramatic effect
-        createFadeInAnimation('.animate-hero', { 
-          duration: 2.0, 
-          y: 120, 
-          stagger: 0.25,
-          ease: "power4.out"
-        });
 
         // Slide-in animations for different elements
         createSlideInAnimation('.animate-slide-left', 'left', { duration: 1.4 });
@@ -269,14 +328,9 @@ export default function Portfolio() {
           </motion.nav>
 
           {/* Hero Section */}
-          <section id="home" className="min-h-screen flex items-center justify-center relative text-center animate-section">
+          <section id="home" className="min-h-screen flex items-center justify-center relative text-center">
             <div className="container mx-auto px-6 flex flex-col items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 1.2, delay: 0.2 }}
-                className="space-y-6 animate-hero"
-              >
+              <div className="space-y-6">
                 <h1 className="text-5xl md:text-7xl font-bold leading-tight">
                   Hi, I'm <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Darshan
                   <br className="md:hidden" /> Dihora</span>
@@ -291,25 +345,21 @@ export default function Portfolio() {
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                  <motion.button
+                  <button
                     onClick={() => scrollToSection('projects')}
-                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-semibold flex items-center gap-2 animate-magnetic"
-                    whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(99, 102, 241, 0.5)" }}
-                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg text-white font-semibold flex items-center gap-2 hover:scale-105 transition-transform duration-200"
                   >
                     View My Work <ArrowRight className="w-4 h-4" />
-                  </motion.button>
+                  </button>
                   
-                  <motion.button
+                  <button
                     onClick={() => scrollToSection('contact')}
-                    className="px-8 py-3 border border-white/40 rounded-lg text-white font-semibold backdrop-blur-sm hover:border-white transition-all duration-300 animate-magnetic"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="px-8 py-3 border border-white/40 rounded-lg text-white font-semibold backdrop-blur-sm hover:border-white hover:scale-105 transition-all duration-200"
                   >
                     Get In Touch
-                  </motion.button>
+                  </button>
                 </div>
-              </motion.div>
+              </div>
             </div>
             
             <motion.div
@@ -677,22 +727,170 @@ export default function Portfolio() {
                 className="text-center mb-16"
               >
                 <h2 className="text-4xl lg:text-5xl font-bold mb-6">
-                  <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Extra-Curriculars</span>
+                  <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Leadership & Impact</span>
                 </h2>
                 <p className="text-lg text-white/70 max-w-2xl mx-auto">
-                  Leadership roles and community contributions
+                  Building communities, leading initiatives, and creating meaningful change through diverse leadership roles
                 </p>
               </motion.div>
-              
-              <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
-                {extraCurriculars.map((activity, index) => (
-                  <div key={activity.id} className="animate-card animate-slide-up animate-magnetic">
-                    <ExtraCurricularCard
-                      activity={activity}
-                      index={index}
-                    />
-                  </div>
-                ))}
+
+              {/* Timeline Container */}
+              <div className="relative max-w-6xl mx-auto">
+                {/* Timeline Line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 via-purple-500 to-pink-500 h-full rounded-full opacity-30 hidden lg:block" />
+                
+                {/* Timeline Items */}
+                <div className="space-y-12">
+                  {extraCurriculars.map((activity, index) => (
+                    <motion.div
+                      key={activity.id}
+                      initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ 
+                        duration: 0.6, 
+                        delay: index * 0.1,
+                        ease: [0.25, 0.1, 0.25, 1]
+                      }}
+                      className={`relative flex items-center justify-center lg:justify-${index % 2 === 0 ? 'start' : 'end'}`}
+                    >
+                      {/* Timeline Node */}
+                      <motion.div 
+                        className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full border-4 border-gray-900 z-10 hidden lg:block"
+                        whileHover={{ scale: 1.5 }}
+                        transition={{ duration: 0.3 }}
+                      />
+                      
+                      {/* Card */}
+                      <motion.div
+                        whileHover={{ 
+                          scale: 1.02, 
+                          y: -8,
+                          boxShadow: "0 25px 50px rgba(59, 130, 246, 0.15)"
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className={`relative w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:mr-auto lg:pr-8' : 'lg:ml-auto lg:pl-8'} group`}
+                      >
+                        <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-white/10 rounded-2xl p-8 overflow-hidden">
+                          {/* Background Effects */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+                          
+                          <div className="relative z-10">
+                            {/* Header */}
+                            <div className="flex items-start justify-between mb-6">
+                              <div className="flex items-start space-x-5 flex-1 min-w-0">
+                                <motion.div 
+                                  className="relative w-24 h-24 rounded-2xl overflow-hidden bg-white/10 backdrop-blur-sm border border-white/20 flex-shrink-0 p-3 shadow-lg"
+                                  whileHover={{ scale: 1.1, rotate: 3, boxShadow: "0 12px 30px rgba(59, 130, 246, 0.25)" }}
+                                  transition={{ duration: 0.3 }}
+                                >
+                                  <img 
+                                    src={activity.logo} 
+                                    alt={`${activity.organization} logo`}
+                                    className="w-full h-full object-contain filter brightness-125 contrast-125 drop-shadow-sm"
+                                  />
+                                  {/* Subtle glow effect */}
+                                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                </motion.div>
+                                <div className="flex-1 min-w-0 pt-1">
+                                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300 leading-tight mb-3">
+                                    {activity.title}
+                                  </h3>
+                                  <p className="text-blue-400 font-semibold text-base mb-3">{activity.organization}</p>
+                                  
+                                  {/* Job Type Badge */}
+                                  <motion.div 
+                                    className="inline-block"
+                                    initial={{ opacity: 0.8 }}
+                                    whileHover={{ opacity: 1, scale: 1.05 }}
+                                    transition={{ duration: 0.2 }}
+                                  >
+                                    <span className={`px-3 py-1.5 rounded-full text-sm font-medium border ${
+                                      activity.type === 'Full-time' ? 'bg-green-500/20 text-green-400 border-green-400/30' :
+                                      activity.type === 'Part-time' ? 'bg-yellow-500/20 text-yellow-400 border-yellow-400/30' :
+                                      'bg-purple-500/20 text-purple-400 border-purple-400/30'
+                                    }`}>
+                                      {activity.type}
+                                    </span>
+                                  </motion.div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Duration and Location */}
+                            <div className="space-y-3 mb-6 text-sm">
+                              <motion.div 
+                                className="flex items-center space-x-3 bg-gradient-to-r from-blue-500/10 to-blue-400/5 border border-blue-400/20 px-4 py-2.5 rounded-xl"
+                                whileHover={{ scale: 1.02, backgroundColor: "rgba(59, 130, 246, 0.15)" }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <Calendar className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                                <span className="font-medium text-white/90">{activity.duration}</span>
+                              </motion.div>
+                              <motion.div 
+                                className="flex items-center space-x-3 bg-gradient-to-r from-purple-500/10 to-purple-400/5 border border-purple-400/20 px-4 py-2.5 rounded-xl"
+                                whileHover={{ scale: 1.02, backgroundColor: "rgba(168, 85, 247, 0.15)" }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <MapPin className="w-4 h-4 text-purple-400 flex-shrink-0" />
+                                <span className="font-medium text-white/90">{activity.location}</span>
+                              </motion.div>
+                              <motion.div 
+                                className="flex items-center space-x-3 bg-gradient-to-r from-cyan-500/10 to-cyan-400/5 border border-cyan-400/20 px-4 py-2.5 rounded-xl"
+                                whileHover={{ scale: 1.02, backgroundColor: "rgba(6, 182, 212, 0.15)" }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                <Briefcase className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                                <span className="font-medium text-white/90">{activity.workType}</span>
+                              </motion.div>
+                            </div>
+
+                            {/* Skills */}
+                            <div className="mb-6">
+                              <h4 className="text-base font-semibold text-white/90 mb-4 flex items-center">
+                                <span className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-3"></span>
+                                Key Skills
+                              </h4>
+                              <div className="flex flex-wrap gap-2.5">
+                                {activity.skills.map((skill, skillIndex) => (
+                                  <motion.span
+                                    key={skillIndex}
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: index * 0.1 + skillIndex * 0.05 }}
+                                    whileHover={{ 
+                                      scale: 1.05, 
+                                      y: -2,
+                                      boxShadow: "0 4px 12px rgba(59, 130, 246, 0.15)"
+                                    }}
+                                    className="px-4 py-2 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-sm rounded-xl text-sm text-white/85 border border-white/20 hover:border-blue-400/60 hover:bg-gradient-to-r hover:from-blue-400/10 hover:to-purple-400/5 transition-all duration-300 font-medium"
+                                  >
+                                    {skill}
+                                  </motion.span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Hover Border Glow */}
+                          <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Summary Stats */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6"
+                >
+                  {/* Stats removed for cleaner design */}
+                </motion.div>
               </div>
             </div>
           </section>
@@ -712,55 +910,128 @@ export default function Portfolio() {
                     Get In <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Touch</span>
                   </h2>
                   <p className="text-lg text-white/70">
-                    Ready to create something amazing together? Let's talk about your next project.
+                    Ready to create something amazing together? Let's connect!
                   </p>
                 </div>
                 
-                <div className="grid lg:grid-cols-2 gap-12">
-                  <ContactForm />
-                  
-                  <motion.div
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.3 }}
-                    className="space-y-8"
-                  >
-                    <div className="glass-card p-8 rounded-2xl">
-                      <h3 className="text-2xl font-semibold mb-6 text-blue-400">Connect With Me</h3>
-                      <div className="space-y-4">
-                        <motion.a
-                          href="mailto:ddihora1604@gmail.com"
-                          className="flex items-center space-x-4 text-white/70 hover:text-blue-400 transition-all duration-300"
-                          whileHover={{ scale: 1.05, x: 10 }}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                  className="glass-card p-12 rounded-2xl"
+                >
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Contact Details */}
+                    <div className="space-y-6">
+                      <h3 className="text-2xl font-semibold mb-8 text-cyan-400">Contact Details</h3>
+                      
+                      <motion.a
+                        href="mailto:ddihora1604@gmail.com"
+                        className="flex items-center space-x-4 text-white/70 hover:text-cyan-400 transition-all duration-300 group"
+                        whileHover={{ scale: 1.05, x: 10 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <motion.div
+                          className="p-3 rounded-xl bg-white/5 group-hover:bg-cyan-400/20 transition-all duration-300"
+                          whileHover={{ rotate: 15 }}
                         >
                           <Mail className="w-6 h-6" />
-                          <span>ddihora1604@gmail.com</span>
-                        </motion.a>
-                        
-                        <motion.a
-                          href="https://github.com/ddihora1604"
-                          target="_blank" rel="noopener noreferrer"
-                          className="flex items-center space-x-4 text-white/70 hover:text-blue-400 transition-all duration-300"
-                          whileHover={{ scale: 1.05, x: 10 }}
+                        </motion.div>
+                        <span className="text-lg">ddihora1604@gmail.com</span>
+                      </motion.a>
+                      
+                      <motion.div
+                        className="flex items-center space-x-4 text-white/70"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                      >
+                        <motion.div
+                          className="p-3 rounded-xl bg-white/5"
+                          whileHover={{ rotate: 15, backgroundColor: "rgba(34, 197, 94, 0.2)" }}
+                          transition={{ duration: 0.3 }}
                         >
-                          <Github className="w-6 h-6" />
-                          <span>GitHub</span>
-                        </motion.a>
-                        
-                        <motion.a
-                          href="https://www.linkedin.com/in/darshan-dihora-38bb652a1/"
-                          target="_blank" rel="noopener noreferrer"
-                          className="flex items-center space-x-4 text-white/70 hover:text-blue-400 transition-all duration-300"
-                          whileHover={{ scale: 1.05, x: 10 }}
+                          <MapPin className="w-6 h-6 text-green-400" />
+                        </motion.div>
+                        <span className="text-lg">Mumbai, India</span>
+                      </motion.div>
+                    </div>
+
+                    {/* Social Links */}
+                    <div className="space-y-6">
+                      <h3 className="text-2xl font-semibold mb-8 text-purple-400">Follow Me</h3>
+                      
+                      <motion.a
+                        href="https://www.linkedin.com/in/darshan-dihora-38bb652a1/"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-4 text-white/70 hover:text-blue-400 transition-all duration-300 group"
+                        whileHover={{ scale: 1.05, x: 10 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <motion.div
+                          className="p-3 rounded-xl bg-white/5 group-hover:bg-blue-400/20 transition-all duration-300"
+                          whileHover={{ rotate: 15 }}
                         >
                           <Linkedin className="w-6 h-6" />
-                          <span>LinkedIn</span>
-                        </motion.a>
-                      </div>
+                        </motion.div>
+                        <span className="text-lg">LinkedIn</span>
+                      </motion.a>
+                      
+                      <motion.a
+                        href="https://github.com/ddihora1604"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-4 text-white/70 hover:text-gray-300 transition-all duration-300 group"
+                        whileHover={{ scale: 1.05, x: 10 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <motion.div
+                          className="p-3 rounded-xl bg-white/5 group-hover:bg-gray-300/20 transition-all duration-300"
+                          whileHover={{ rotate: 15 }}
+                        >
+                          <Github className="w-6 h-6" />
+                        </motion.div>
+                        <span className="text-lg">GitHub</span>
+                      </motion.a>
+                      
+                      <motion.a
+                        href="https://www.instagram.com/darshan.dihora/"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-4 text-white/70 hover:text-pink-400 transition-all duration-300 group"
+                        whileHover={{ scale: 1.05, x: 10 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <motion.div
+                          className="p-3 rounded-xl bg-white/5 group-hover:bg-pink-400/20 transition-all duration-300"
+                          whileHover={{ rotate: 15 }}
+                        >
+                          <Instagram className="w-6 h-6" />
+                        </motion.div>
+                        <span className="text-lg">Instagram</span>
+                      </motion.a>
+                      
+                      <motion.a
+                        href="https://x.com/ddihora1604"
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center space-x-4 text-white/70 hover:text-blue-300 transition-all duration-300 group"
+                        whileHover={{ scale: 1.05, x: 10 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <motion.div
+                          className="p-3 rounded-xl bg-white/5 group-hover:bg-blue-300/20 transition-all duration-300"
+                          whileHover={{ rotate: 15 }}
+                        >
+                          <Twitter className="w-6 h-6" />
+                        </motion.div>
+                        <span className="text-lg">Twitter (X)</span>
+                      </motion.a>
                     </div>
-                  </motion.div>
-                </div>
+                  </div>
+                </motion.div>
               </motion.div>
             </div>
           </section>
@@ -776,7 +1047,7 @@ export default function Portfolio() {
                 className="text-center"
               >
                 <p className="text-white/50">
-                  © 2024 Darshan Dihora. Crafted with passion and cutting-edge technology.
+                  © 2025 Darshan Dihora.
                 </p>
               </motion.div>
             </div>
