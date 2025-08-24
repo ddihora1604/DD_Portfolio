@@ -2,18 +2,7 @@
 
 <div align="center">
   
-[![💼 VIEW LIVE PORTFOLIO](https://img.shields.io/badge/💼_VIEW_LIVE_PORTFOLIO-8B5CF6?style=for-the-badge&logo=react&logoColor=white&labelColor=1E1B4B&color=A855F7&gradient=linear-gradient(45deg,8B5CF6,A855F7,C084FC))](https://ddportfolio-six.vercel.app/)
-
-<br/>
-
-![Portfolio](https://img.shields.io/badge/✨_Interactive_Experience-6366F1?style=flat-square&logo=sparkles&logoColor=white&labelColor=312E81)
-![Tech Stack](https://img.shields.io/badge/⚡_React_+_Spline_+_Lenis-8B5CF6?style=flat-square&logo=react&logoColor=white&labelColor=1E1B4B)
-
-</div>an Dihora - AI Enthusiast Portfolio
-
-<div align="center">
-  
-[![🚀 VIEW LIVE PORTFOLIO](https://img.shields.io/badge/🚀_VIEW_LIVE_PORTFOLIO-00D9FF?style=for-the-badge&logo=vercel&logoColor=white&labelColor=0a0a0a&color=00D9FF)](https://ddportfolio-six.vercel.app/)
+[![VIEW LIVE PORTFOLIO](https://img.shields.io/badge/_VIEW_LIVE_PORTFOLIO-8B5CF6?style=for-the-badge&logo=react&logoColor=white&labelColor=1E1B4B&color=A855F7&gradient=linear-gradient(45deg,8B5CF6,A855F7,C084FC))](https://ddportfolio-six.vercel.app/)
 
 </div>
 
