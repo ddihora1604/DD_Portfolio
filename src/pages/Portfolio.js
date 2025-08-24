@@ -274,6 +274,42 @@ export default function Portfolio() {
         {isLoading && <LoadingScreen />}
       </AnimatePresence>
 
+      {/* Navigation - Outside of scrolling content */}
+      {!isLoading && (
+        <motion.nav
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="fixed-nav p-6 animate-nav"
+        >
+          <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
+            {/* <motion.div
+              className="text-2xl font-bold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent animate-float"
+              whileHover={{ scale: 1.05 }}
+            >
+              DARSHAN
+            </motion.div> */}
+            
+            <div className="hidden md:flex items-center space-x-8">
+              {['Home', 'About', 'Experience', 'Projects', 'Extra-Curriculars', 'Contact'].map((item) => (
+                <motion.button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase().replace('-', ''))}
+                  className={`capitalize transition-all duration-300 text-base font-medium ${
+                    activeSection === item.toLowerCase().replace('-', '') 
+                      ? 'text-white' 
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {item}
+                </motion.button>
+              ))}
+            </div>
+          </div>
+        </motion.nav>
+      )}
+
       <AnimatePresence>
         {!isLoading && (
           <motion.div
@@ -293,39 +329,6 @@ export default function Portfolio() {
               delay: 0.2
             }}
           >
-            {/* Navigation */}
-            <motion.nav
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="fixed top-0 left-0 right-0 z-50 p-6 animate-nav"
-            >
-            <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
-              {/* <motion.div
-                className="text-2xl font-bold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent animate-float"
-                whileHover={{ scale: 1.05 }}
-              >
-                DARSHAN
-              </motion.div> */}
-              
-              <div className="hidden md:flex items-center space-x-8">
-                {['Home', 'About', 'Experience', 'Projects', 'Extra-Curriculars', 'Contact'].map((item) => (
-                  <motion.button
-                    key={item}
-                    onClick={() => scrollToSection(item.toLowerCase().replace('-', ''))}
-                    className={`capitalize transition-all duration-300 text-base font-medium ${
-                      activeSection === item.toLowerCase().replace('-', '') 
-                        ? 'text-white' 
-                        : 'text-white/60 hover:text-white'
-                    }`}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {item}
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-          </motion.nav>
 
           {/* Hero Section */}
           <section id="home" className="min-h-screen flex items-center justify-center relative text-center">
