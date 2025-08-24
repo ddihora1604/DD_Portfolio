@@ -137,7 +137,7 @@ export default function Portfolio() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 13500); // Total: 10s Spline + 3s Progress + 0.5s transition = 13.5s
 
     const handleScroll = () => {
       const sections = ['home', 'about', 'experience', 'projects', 'extracurriculars', 'contact'];
@@ -211,18 +211,36 @@ export default function Portfolio() {
 
   return (
     <div className="relative text-white font-georgia">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen />}
       </AnimatePresence>
 
-      {!isLoading && (
-        <>
-          {/* Navigation */}
-          <motion.nav
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="fixed top-0 left-0 right-0 z-50 p-6 animate-nav"
+      <AnimatePresence>
+        {!isLoading && (
+          <motion.div
+            initial={{ 
+              opacity: 0, 
+              scale: 0.95,
+              filter: "blur(10px)"
+            }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              filter: "blur(0px)"
+            }}
+            transition={{ 
+              duration: 1.2,
+              ease: [0.4, 0, 0.2, 1],
+              delay: 0.2
+            }}
           >
+            {/* Navigation */}
+            <motion.nav
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="fixed top-0 left-0 right-0 z-50 p-6 animate-nav"
+            >
             <div className="max-w-7xl mx-auto flex justify-between items-center px-4">
               {/* <motion.div
                 className="text-2xl font-bold tracking-wider bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent animate-float"
@@ -763,8 +781,9 @@ export default function Portfolio() {
               </motion.div>
             </div>
           </footer>
-        </>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       <style jsx>{`
         .glow-text {
