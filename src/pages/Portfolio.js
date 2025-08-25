@@ -769,7 +769,7 @@ export default function Portfolio() {
                   Extra Curricular <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Activities</span>
                 </h2>
                 <p className="text-lg text-white/70 max-w-2xl mx-auto">
-                  Managing committees and clubs, leading initiatives, and creating meaningful change through diverse leadership roles
+                  Managed committees and clubs, led initiatives, and created meaningful change through diverse leadership roles
                 </p>
               </motion.div>
 
