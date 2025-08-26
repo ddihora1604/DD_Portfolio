@@ -99,6 +99,13 @@ export default function LoadingScreen() {
               }}
             />
 
+            {/* Custom watermark cover for robot page - black to blend with background */}
+            <div className="absolute bottom-5 right-5 z-30 text-white text-sm font-medium px-6 py-3 rounded-lg"
+                  style={{ backgroundColor: "#121314" }}
+                  >
+                  Darshan Dihora
+            </div>
+
             {/* Cloud Message Overlay */}
             <AnimatePresence>
               {showCloudMessage && (
@@ -170,7 +177,7 @@ export default function LoadingScreen() {
                       <motion.div
                         className="absolute flex items-center justify-center"
                         style={{ 
-                          top: '26px',
+                          top: '27px',
                           left: '5px',
                           width: '144px',
                           height: '70px'
@@ -185,8 +192,11 @@ export default function LoadingScreen() {
                           damping: 20
                         }}
                       >
-                        <span className="text-xl font-bold text-black tracking-wide font-sans select-none">
-                          HEY!
+                        <span 
+                        className="text-xl font-bold text-black tracking-wide select-none font-serif"
+                        style={{ fontFamily: "Georgia, serif" }}
+                        >
+                        HEY!
                         </span>
                       </motion.div>
 

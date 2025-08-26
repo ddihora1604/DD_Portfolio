@@ -25,6 +25,11 @@ export default function Layout({ children }) {
             title="3D Background Animation"
           />
           <div className="absolute inset-0 bg-black/10"></div>
+          
+          {/* Custom watermark cover for main page */}
+          <div className="absolute bottom-5 right-4 z-10 bg-[#000000] backdrop-blur-sm text-white text-sm font-medium px-6 py-3 rounded-lg">
+            Darshan Dihora
+          </div>
         </div>
         
         {/* Main content, scrolls over the background */}
