@@ -45,6 +45,20 @@ import TEDx1 from "../assets/images/TEDx_1.png";
 import TEDx2 from "../assets/images/TEDx_2.jpeg";
 import TEDx3 from "../assets/images/TEDx_3.jpeg";
 import TEDx4 from "../assets/images/TEDx_4.jpeg";
+
+// Import GDSC gallery images
+import GDSC1 from "../assets/images/GDSC_1.jpeg";
+import GDSC2 from "../assets/images/GDSC_2.png";
+import GDSC3 from "../assets/images/GDSC_3.jpeg";
+
+// Import Trinity gallery images
+import Trinity1 from "../assets/images/Trinity_1.JPG";
+import Trinity2 from "../assets/images/Trinity_2.png";
+import Trinity3 from "../assets/images/Trinity_3.jpg";
+
+// Import NOVA gallery images
+import NOVA1 from "../assets/images/NOVA_1.jpg";
+
 import IITKLogo from "../assets/images/IITK.png";
 import IITPLogo from "../assets/images/IITP.png";
 
@@ -173,7 +187,9 @@ const extraCurriculars = [
     location: "Mumbai, Maharashtra, India",
     workType: "On-site",
     skills: ["Public Relations", "Strategic Public Relations Planning", "Social Media Communications", "Media managing", "Event Photography"],
-    logo: TrinityLogo
+    logo: TrinityLogo,
+    hasFlipCard: true,
+    galleryImages: [Trinity1, Trinity2, Trinity3]
   },
   {
     id: 6,
@@ -195,7 +211,9 @@ const extraCurriculars = [
     location: "Mumbai, Maharashtra, India",
     workType: "On-site",
     skills: ["Event Management", "Executing Events", "Strategic Communications", "Performance Management", "Resource Management"],
-    logo: GDSCLogo
+    logo: GDSCLogo,
+    hasFlipCard: true,
+    galleryImages: [GDSC1, GDSC2, GDSC3]
   },
   {
     id: 8,
@@ -206,7 +224,9 @@ const extraCurriculars = [
     location: "Mumbai, Maharashtra, India",
     workType: "Hybrid",
     skills: ["Marketing Strategy", "Marketing Management", "Sponsorship Relations", "Public Relations", "Strategic Public Relations Planning"],
-    logo: NOVALogo
+    logo: NOVALogo,
+    hasFlipCard: true,
+    galleryImages: [NOVA1]
   }
 ];
 
@@ -243,8 +263,14 @@ export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
   const [isNSDCFlipped, setIsNSDCFlipped] = useState(false);
   const [isTEDxFlipped, setIsTEDxFlipped] = useState(false);
+  const [isGDSCFlipped, setIsGDSCFlipped] = useState(false);
+  const [isTrinityFlipped, setIsTrinityFlipped] = useState(false);
+  const [isNOVAFlipped, setIsNOVAFlipped] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentTEDxImageIndex, setCurrentTEDxImageIndex] = useState(0);
+  const [currentGDSCImageIndex, setCurrentGDSCImageIndex] = useState(0);
+  const [currentTrinityImageIndex, setCurrentTrinityImageIndex] = useState(0);
+  const [currentNOVAImageIndex, setCurrentNOVAImageIndex] = useState(0);
 
   const handleNSDCFlip = () => {
     setIsNSDCFlipped(!isNSDCFlipped);
@@ -252,6 +278,18 @@ export default function Portfolio() {
 
   const handleTEDxFlip = () => {
     setIsTEDxFlipped(!isTEDxFlipped);
+  };
+
+  const handleGDSCFlip = () => {
+    setIsGDSCFlipped(!isGDSCFlipped);
+  };
+
+  const handleTrinityFlip = () => {
+    setIsTrinityFlipped(!isTrinityFlipped);
+  };
+
+  const handleNOVAFlip = () => {
+    setIsNOVAFlipped(!isNOVAFlipped);
   };
 
   const nextImage = () => {
@@ -286,6 +324,60 @@ export default function Portfolio() {
     if (tedxCard && tedxCard.galleryImages) {
       setCurrentTEDxImageIndex((prev) => 
         prev === 0 ? tedxCard.galleryImages.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const nextGDSCImage = () => {
+    const gdscCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 7);
+    if (gdscCard && gdscCard.galleryImages) {
+      setCurrentGDSCImageIndex((prev) => 
+        prev === gdscCard.galleryImages.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevGDSCImage = () => {
+    const gdscCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 7);
+    if (gdscCard && gdscCard.galleryImages) {
+      setCurrentGDSCImageIndex((prev) => 
+        prev === 0 ? gdscCard.galleryImages.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const nextTrinityImage = () => {
+    const trinityCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 5);
+    if (trinityCard && trinityCard.galleryImages) {
+      setCurrentTrinityImageIndex((prev) => 
+        prev === trinityCard.galleryImages.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevTrinityImage = () => {
+    const trinityCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 5);
+    if (trinityCard && trinityCard.galleryImages) {
+      setCurrentTrinityImageIndex((prev) => 
+        prev === 0 ? trinityCard.galleryImages.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const nextNOVAImage = () => {
+    const novaCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 8);
+    if (novaCard && novaCard.galleryImages) {
+      setCurrentNOVAImageIndex((prev) => 
+        prev === novaCard.galleryImages.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevNOVAImage = () => {
+    const novaCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 8);
+    if (novaCard && novaCard.galleryImages) {
+      setCurrentNOVAImageIndex((prev) => 
+        prev === 0 ? novaCard.galleryImages.length - 1 : prev - 1
       );
     }
   };
@@ -968,10 +1060,22 @@ export default function Portfolio() {
                             </div>
                           </div>
 
-                          {/* Flip Button - Dynamic for NSDC and TEDx */}
-                          {activity.hasFlipCard && ((activity.id === 2 && !isNSDCFlipped) || (activity.id === 4 && !isTEDxFlipped)) && (
+                          {/* Flip Button - Dynamic for all cards */}
+                          {activity.hasFlipCard && (
+                            (activity.id === 2 && !isNSDCFlipped) ||
+                            (activity.id === 4 && !isTEDxFlipped) ||
+                            (activity.id === 5 && !isTrinityFlipped) ||
+                            (activity.id === 7 && !isGDSCFlipped) ||
+                            (activity.id === 8 && !isNOVAFlipped)
+                          ) && (
                             <motion.button
-                              onClick={activity.id === 2 ? handleNSDCFlip : handleTEDxFlip}
+                              onClick={() => {
+                                if (activity.id === 2) handleNSDCFlip();
+                                else if (activity.id === 4) handleTEDxFlip();
+                                else if (activity.id === 5) handleTrinityFlip();
+                                else if (activity.id === 7) handleGDSCFlip();
+                                else if (activity.id === 8) handleNOVAFlip();
+                              }}
                               whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(147, 51, 234, 0.6)" }}
                               whileTap={{ scale: 0.9 }}
                               className="absolute bottom-4 right-4 bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-xl z-20"
@@ -980,8 +1084,14 @@ export default function Portfolio() {
                             </motion.button>
                           )}
 
-                          {/* Gallery Overlay - Dynamic for NSDC and TEDx */}
-                          {activity.hasFlipCard && ((activity.id === 2 && isNSDCFlipped) || (activity.id === 4 && isTEDxFlipped)) && (
+                          {/* Gallery Overlay - Dynamic for all cards */}
+                          {activity.hasFlipCard && (
+                            (activity.id === 2 && isNSDCFlipped) ||
+                            (activity.id === 4 && isTEDxFlipped) ||
+                            (activity.id === 5 && isTrinityFlipped) ||
+                            (activity.id === 7 && isGDSCFlipped) ||
+                            (activity.id === 8 && isNOVAFlipped)
+                          ) && (
                             <motion.div
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
@@ -993,18 +1103,57 @@ export default function Portfolio() {
                                 <div className="flex items-center justify-between mb-3">
                                   <h3 className="text-xl font-bold text-white">{activity.organization} Gallery</h3>
                                   <span className="text-sm text-white/60">
-                                    {(activity.id === 2 ? currentImageIndex : currentTEDxImageIndex) + 1} / {activity.galleryImages?.length || 0}
+                                    {(() => {
+                                      if (activity.id === 2) return currentImageIndex + 1;
+                                      if (activity.id === 4) return currentTEDxImageIndex + 1;
+                                      if (activity.id === 5) return currentTrinityImageIndex + 1;
+                                      if (activity.id === 7) return currentGDSCImageIndex + 1;
+                                      if (activity.id === 8) return currentNOVAImageIndex + 1;
+                                      return 1;
+                                    })()} / {activity.galleryImages?.length || 0}
                                   </span>
                                 </div>
 
                                 {/* Image Container */}
                                 <div className="relative flex-1 bg-white/5 rounded-xl overflow-hidden mb-3">
-                                  {activity.galleryImages && activity.galleryImages[activity.id === 2 ? currentImageIndex : currentTEDxImageIndex] && (
+                                  {activity.galleryImages && activity.galleryImages[(() => {
+                                    if (activity.id === 2) return currentImageIndex;
+                                    if (activity.id === 4) return currentTEDxImageIndex;
+                                    if (activity.id === 5) return currentTrinityImageIndex;
+                                    if (activity.id === 7) return currentGDSCImageIndex;
+                                    if (activity.id === 8) return currentNOVAImageIndex;
+                                    return 0;
+                                  })()] && (
                                     <motion.img
-                                      key={activity.id === 2 ? currentImageIndex : currentTEDxImageIndex}
-                                      src={activity.galleryImages[activity.id === 2 ? currentImageIndex : currentTEDxImageIndex]}
-                                      alt={`${activity.organization} gallery ${(activity.id === 2 ? currentImageIndex : currentTEDxImageIndex) + 1}`}
-                                      className="w-full h-full object-cover"
+                                      key={(() => {
+                                        if (activity.id === 2) return currentImageIndex;
+                                        if (activity.id === 4) return currentTEDxImageIndex;
+                                        if (activity.id === 5) return currentTrinityImageIndex;
+                                        if (activity.id === 7) return currentGDSCImageIndex;
+                                        if (activity.id === 8) return currentNOVAImageIndex;
+                                        return 0;
+                                      })()}
+                                      src={activity.galleryImages[(() => {
+                                        if (activity.id === 2) return currentImageIndex;
+                                        if (activity.id === 4) return currentTEDxImageIndex;
+                                        if (activity.id === 5) return currentTrinityImageIndex;
+                                        if (activity.id === 7) return currentGDSCImageIndex;
+                                        if (activity.id === 8) return currentNOVAImageIndex;
+                                        return 0;
+                                      })()]}
+                                      alt={`${activity.organization} gallery ${(() => {
+                                        if (activity.id === 2) return currentImageIndex;
+                                        if (activity.id === 4) return currentTEDxImageIndex;
+                                        if (activity.id === 5) return currentTrinityImageIndex;
+                                        if (activity.id === 7) return currentGDSCImageIndex;
+                                        if (activity.id === 8) return currentNOVAImageIndex;
+                                        return 0;
+                                      })() + 1}`}
+                                      className={`w-full h-full ${
+                                        activity.id === 5 && currentTrinityImageIndex === 0 
+                                          ? 'object-cover object-[18%_50%]' 
+                                          : 'object-cover'
+                                      }`}
                                       initial={{ opacity: 0, scale: 1.1 }}
                                       animate={{ opacity: 1, scale: 1 }}
                                       transition={{ duration: 0.5 }}
@@ -1013,7 +1162,13 @@ export default function Portfolio() {
                                   
                                   {/* Navigation Arrows */}
                                   <motion.button
-                                    onClick={activity.id === 2 ? prevImage : prevTEDxImage}
+                                    onClick={() => {
+                                      if (activity.id === 2) prevImage();
+                                      else if (activity.id === 4) prevTEDxImage();
+                                      else if (activity.id === 5) prevTrinityImage();
+                                      else if (activity.id === 7) prevGDSCImage();
+                                      else if (activity.id === 8) prevNOVAImage();
+                                    }}
                                     whileHover={{ scale: 1.1, backgroundColor: "rgba(147, 51, 234, 0.8)" }}
                                     whileTap={{ scale: 0.9 }}
                                     className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-purple-600/70 p-3 rounded-full text-white transition-all duration-300"
@@ -1022,7 +1177,13 @@ export default function Portfolio() {
                                   </motion.button>
 
                                   <motion.button
-                                    onClick={activity.id === 2 ? nextImage : nextTEDxImage}
+                                    onClick={() => {
+                                      if (activity.id === 2) nextImage();
+                                      else if (activity.id === 4) nextTEDxImage();
+                                      else if (activity.id === 5) nextTrinityImage();
+                                      else if (activity.id === 7) nextGDSCImage();
+                                      else if (activity.id === 8) nextNOVAImage();
+                                    }}
                                     whileHover={{ scale: 1.1, backgroundColor: "rgba(147, 51, 234, 0.8)" }}
                                     whileTap={{ scale: 0.9 }}
                                     className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-purple-600/70 p-3 rounded-full text-white transition-all duration-300"
@@ -1036,10 +1197,23 @@ export default function Portfolio() {
                                   {activity.galleryImages?.map((_, index) => (
                                     <motion.button
                                       key={index}
-                                      onClick={() => activity.id === 2 ? setCurrentImageIndex(index) : setCurrentTEDxImageIndex(index)}
+                                      onClick={() => {
+                                        if (activity.id === 2) setCurrentImageIndex(index);
+                                        else if (activity.id === 4) setCurrentTEDxImageIndex(index);
+                                        else if (activity.id === 5) setCurrentTrinityImageIndex(index);
+                                        else if (activity.id === 7) setCurrentGDSCImageIndex(index);
+                                        else if (activity.id === 8) setCurrentNOVAImageIndex(index);
+                                      }}
                                       whileHover={{ scale: 1.3 }}
                                       className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                                        index === (activity.id === 2 ? currentImageIndex : currentTEDxImageIndex)
+                                        index === (() => {
+                                          if (activity.id === 2) return currentImageIndex;
+                                          if (activity.id === 4) return currentTEDxImageIndex;
+                                          if (activity.id === 5) return currentTrinityImageIndex;
+                                          if (activity.id === 7) return currentGDSCImageIndex;
+                                          if (activity.id === 8) return currentNOVAImageIndex;
+                                          return 0;
+                                        })()
                                           ? 'bg-purple-400 scale-125' 
                                           : 'bg-white/40 hover:bg-white/60'
                                       }`}
@@ -1049,7 +1223,13 @@ export default function Portfolio() {
 
                                 {/* Close Button */}
                                 <motion.button
-                                  onClick={activity.id === 2 ? handleNSDCFlip : handleTEDxFlip}
+                                  onClick={() => {
+                                    if (activity.id === 2) handleNSDCFlip();
+                                    else if (activity.id === 4) handleTEDxFlip();
+                                    else if (activity.id === 5) handleTrinityFlip();
+                                    else if (activity.id === 7) handleGDSCFlip();
+                                    else if (activity.id === 8) handleNOVAFlip();
+                                  }}
                                   whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(147, 51, 234, 0.6)" }}
                                   whileTap={{ scale: 0.9 }}
                                   className="self-end bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-xl"
