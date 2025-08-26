@@ -11,7 +11,10 @@ import {
   Building,
   Calendar,
   MapPin,
-  Award
+  Award,
+  RotateCcw,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
 import LoadingScreen from "../components/portfolio/LoadingScreen";
@@ -28,6 +31,14 @@ import TrinityLogo from "../assets/images/Trinity.png";
 import CodestarsLogo from "../assets/images/Codestars.png";
 import GDSCLogo from "../assets/images/GDSC.png";
 import NOVALogo from "../assets/images/NOVA.png";
+
+// Import NSDC gallery images
+import NSDC1 from "../assets/images/NSDC_1.jpeg";
+import NSDC2 from "../assets/images/NSDC_2.jpeg";
+import NSDC3 from "../assets/images/NSDC_3.jpeg";
+import NSDC4 from "../assets/images/NSDC_4.jpeg";
+import NSDC5 from "../assets/images/NSDC_5.jpeg";
+import NSDC6 from "../assets/images/NSDC_6.jpeg";
 import IITKLogo from "../assets/images/IITK.png";
 import IITPLogo from "../assets/images/IITP.png";
 
@@ -119,7 +130,9 @@ const extraCurriculars = [
     location: "Mumbai, Maharashtra, India",
     workType: "Hybrid",
     skills: ["Event Management", "Executing Events", "Managing Finance", "Team Coordination", "Resource Management"],
-    logo: NSDCLogo
+    logo: NSDCLogo,
+    galleryImages: [NSDC1, NSDC2, NSDC3, NSDC4, NSDC5, NSDC6],
+    hasFlipCard: true
   },
   {
     id: 3,
@@ -220,6 +233,30 @@ const skillCategories = [
 export default function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
+  const [isNSDCFlipped, setIsNSDCFlipped] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleNSDCFlip = () => {
+    setIsNSDCFlipped(!isNSDCFlipped);
+  };
+
+  const nextImage = () => {
+    const nsdcCard = extraCurriculars.find(card => card.hasFlipCard);
+    if (nsdcCard && nsdcCard.galleryImages) {
+      setCurrentImageIndex((prev) => 
+        prev === nsdcCard.galleryImages.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    const nsdcCard = extraCurriculars.find(card => card.hasFlipCard);
+    if (nsdcCard && nsdcCard.galleryImages) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? nsdcCard.galleryImages.length - 1 : prev - 1
+      );
+    }
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -898,6 +935,98 @@ export default function Portfolio() {
                               </div>
                             </div>
                           </div>
+
+                          {/* NSDC Flip Button */}
+                          {activity.hasFlipCard && !isNSDCFlipped && (
+                            <motion.button
+                              onClick={handleNSDCFlip}
+                              whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(147, 51, 234, 0.6)" }}
+                              whileTap={{ scale: 0.9 }}
+                              className="absolute bottom-4 right-4 bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-xl z-20"
+                            >
+                              <RotateCcw className="w-5 h-5" />
+                            </motion.button>
+                          )}
+
+                          {/* NSDC Gallery Overlay */}
+                          {activity.hasFlipCard && isNSDCFlipped && (
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              className="absolute inset-0 bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-sm rounded-2xl z-10 p-4"
+                            >
+                              <div className="h-full flex flex-col">
+                                {/* Header */}
+                                <div className="flex items-center justify-between mb-3">
+                                  <h3 className="text-xl font-bold text-white">{activity.organization} Gallery</h3>
+                                  <span className="text-sm text-white/60">
+                                    {currentImageIndex + 1} / {activity.galleryImages?.length || 0}
+                                  </span>
+                                </div>
+
+                                {/* Image Container */}
+                                <div className="relative flex-1 bg-white/5 rounded-xl overflow-hidden mb-3">
+                                  {activity.galleryImages && activity.galleryImages[currentImageIndex] && (
+                                    <motion.img
+                                      key={currentImageIndex}
+                                      src={activity.galleryImages[currentImageIndex]}
+                                      alt={`${activity.organization} gallery ${currentImageIndex + 1}`}
+                                      className="w-full h-full object-cover"
+                                      initial={{ opacity: 0, scale: 1.1 }}
+                                      animate={{ opacity: 1, scale: 1 }}
+                                      transition={{ duration: 0.5 }}
+                                    />
+                                  )}
+                                  
+                                  {/* Navigation Arrows */}
+                                  <motion.button
+                                    onClick={prevImage}
+                                    whileHover={{ scale: 1.1, backgroundColor: "rgba(147, 51, 234, 0.8)" }}
+                                    whileTap={{ scale: 0.9 }}
+                                    className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-purple-600/70 p-3 rounded-full text-white transition-all duration-300"
+                                  >
+                                    <ChevronLeft className="w-5 h-5" />
+                                  </motion.button>
+
+                                  <motion.button
+                                    onClick={nextImage}
+                                    whileHover={{ scale: 1.1, backgroundColor: "rgba(147, 51, 234, 0.8)" }}
+                                    whileTap={{ scale: 0.9 }}
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-purple-600/70 p-3 rounded-full text-white transition-all duration-300"
+                                  >
+                                    <ChevronRight className="w-5 h-5" />
+                                  </motion.button>
+                                </div>
+
+                                {/* Image Indicators */}
+                                <div className="flex justify-center gap-2 mb-3">
+                                  {activity.galleryImages?.map((_, index) => (
+                                    <motion.button
+                                      key={index}
+                                      onClick={() => setCurrentImageIndex(index)}
+                                      whileHover={{ scale: 1.3 }}
+                                      className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                                        index === currentImageIndex
+                                          ? 'bg-purple-400 scale-125' 
+                                          : 'bg-white/40 hover:bg-white/60'
+                                      }`}
+                                    />
+                                  ))}
+                                </div>
+
+                                {/* Close Button */}
+                                <motion.button
+                                  onClick={handleNSDCFlip}
+                                  whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(147, 51, 234, 0.6)" }}
+                                  whileTap={{ scale: 0.9 }}
+                                  className="self-end bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-xl"
+                                >
+                                  <RotateCcw className="w-5 h-5" />
+                                </motion.button>
+                              </div>
+                            </motion.div>
+                          )}
 
                           {/* Hover Border Glow */}
                           <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10 blur-xl" />
