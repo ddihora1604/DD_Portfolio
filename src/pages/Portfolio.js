@@ -39,6 +39,12 @@ import NSDC3 from "../assets/images/NSDC_3.jpeg";
 import NSDC4 from "../assets/images/NSDC_4.jpeg";
 import NSDC5 from "../assets/images/NSDC_5.jpeg";
 import NSDC6 from "../assets/images/NSDC_6.jpeg";
+
+// Import TEDx gallery images
+import TEDx1 from "../assets/images/TEDx_1.png";
+import TEDx2 from "../assets/images/TEDx_2.jpeg";
+import TEDx3 from "../assets/images/TEDx_3.jpeg";
+import TEDx4 from "../assets/images/TEDx_4.jpeg";
 import IITKLogo from "../assets/images/IITK.png";
 import IITPLogo from "../assets/images/IITP.png";
 
@@ -154,7 +160,9 @@ const extraCurriculars = [
     location: "Mumbai, Maharashtra, India",
     workType: "On-site",
     skills: ["Event Management", "Event Planning", "Live Events", "Executive Management", "Team Management"],
-    logo: TedxLogo
+    logo: TedxLogo,
+    hasFlipCard: true,
+    galleryImages: [TEDx1, TEDx2, TEDx3, TEDx4]
   },
   {
     id: 5,
@@ -234,14 +242,20 @@ export default function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
   const [isNSDCFlipped, setIsNSDCFlipped] = useState(false);
+  const [isTEDxFlipped, setIsTEDxFlipped] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentTEDxImageIndex, setCurrentTEDxImageIndex] = useState(0);
 
   const handleNSDCFlip = () => {
     setIsNSDCFlipped(!isNSDCFlipped);
   };
 
+  const handleTEDxFlip = () => {
+    setIsTEDxFlipped(!isTEDxFlipped);
+  };
+
   const nextImage = () => {
-    const nsdcCard = extraCurriculars.find(card => card.hasFlipCard);
+    const nsdcCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 2);
     if (nsdcCard && nsdcCard.galleryImages) {
       setCurrentImageIndex((prev) => 
         prev === nsdcCard.galleryImages.length - 1 ? 0 : prev + 1
@@ -250,10 +264,28 @@ export default function Portfolio() {
   };
 
   const prevImage = () => {
-    const nsdcCard = extraCurriculars.find(card => card.hasFlipCard);
+    const nsdcCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 2);
     if (nsdcCard && nsdcCard.galleryImages) {
       setCurrentImageIndex((prev) => 
         prev === 0 ? nsdcCard.galleryImages.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const nextTEDxImage = () => {
+    const tedxCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 4);
+    if (tedxCard && tedxCard.galleryImages) {
+      setCurrentTEDxImageIndex((prev) => 
+        prev === tedxCard.galleryImages.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevTEDxImage = () => {
+    const tedxCard = extraCurriculars.find(card => card.hasFlipCard && card.id === 4);
+    if (tedxCard && tedxCard.galleryImages) {
+      setCurrentTEDxImageIndex((prev) => 
+        prev === 0 ? tedxCard.galleryImages.length - 1 : prev - 1
       );
     }
   };
@@ -936,10 +968,10 @@ export default function Portfolio() {
                             </div>
                           </div>
 
-                          {/* NSDC Flip Button */}
-                          {activity.hasFlipCard && !isNSDCFlipped && (
+                          {/* Flip Button - Dynamic for NSDC and TEDx */}
+                          {activity.hasFlipCard && ((activity.id === 2 && !isNSDCFlipped) || (activity.id === 4 && !isTEDxFlipped)) && (
                             <motion.button
-                              onClick={handleNSDCFlip}
+                              onClick={activity.id === 2 ? handleNSDCFlip : handleTEDxFlip}
                               whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(147, 51, 234, 0.6)" }}
                               whileTap={{ scale: 0.9 }}
                               className="absolute bottom-4 right-4 bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-xl z-20"
@@ -948,8 +980,8 @@ export default function Portfolio() {
                             </motion.button>
                           )}
 
-                          {/* NSDC Gallery Overlay */}
-                          {activity.hasFlipCard && isNSDCFlipped && (
+                          {/* Gallery Overlay - Dynamic for NSDC and TEDx */}
+                          {activity.hasFlipCard && ((activity.id === 2 && isNSDCFlipped) || (activity.id === 4 && isTEDxFlipped)) && (
                             <motion.div
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
@@ -961,17 +993,17 @@ export default function Portfolio() {
                                 <div className="flex items-center justify-between mb-3">
                                   <h3 className="text-xl font-bold text-white">{activity.organization} Gallery</h3>
                                   <span className="text-sm text-white/60">
-                                    {currentImageIndex + 1} / {activity.galleryImages?.length || 0}
+                                    {(activity.id === 2 ? currentImageIndex : currentTEDxImageIndex) + 1} / {activity.galleryImages?.length || 0}
                                   </span>
                                 </div>
 
                                 {/* Image Container */}
                                 <div className="relative flex-1 bg-white/5 rounded-xl overflow-hidden mb-3">
-                                  {activity.galleryImages && activity.galleryImages[currentImageIndex] && (
+                                  {activity.galleryImages && activity.galleryImages[activity.id === 2 ? currentImageIndex : currentTEDxImageIndex] && (
                                     <motion.img
-                                      key={currentImageIndex}
-                                      src={activity.galleryImages[currentImageIndex]}
-                                      alt={`${activity.organization} gallery ${currentImageIndex + 1}`}
+                                      key={activity.id === 2 ? currentImageIndex : currentTEDxImageIndex}
+                                      src={activity.galleryImages[activity.id === 2 ? currentImageIndex : currentTEDxImageIndex]}
+                                      alt={`${activity.organization} gallery ${(activity.id === 2 ? currentImageIndex : currentTEDxImageIndex) + 1}`}
                                       className="w-full h-full object-cover"
                                       initial={{ opacity: 0, scale: 1.1 }}
                                       animate={{ opacity: 1, scale: 1 }}
@@ -981,7 +1013,7 @@ export default function Portfolio() {
                                   
                                   {/* Navigation Arrows */}
                                   <motion.button
-                                    onClick={prevImage}
+                                    onClick={activity.id === 2 ? prevImage : prevTEDxImage}
                                     whileHover={{ scale: 1.1, backgroundColor: "rgba(147, 51, 234, 0.8)" }}
                                     whileTap={{ scale: 0.9 }}
                                     className="absolute left-3 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-purple-600/70 p-3 rounded-full text-white transition-all duration-300"
@@ -990,7 +1022,7 @@ export default function Portfolio() {
                                   </motion.button>
 
                                   <motion.button
-                                    onClick={nextImage}
+                                    onClick={activity.id === 2 ? nextImage : nextTEDxImage}
                                     whileHover={{ scale: 1.1, backgroundColor: "rgba(147, 51, 234, 0.8)" }}
                                     whileTap={{ scale: 0.9 }}
                                     className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-black/60 hover:bg-purple-600/70 p-3 rounded-full text-white transition-all duration-300"
@@ -1004,10 +1036,10 @@ export default function Portfolio() {
                                   {activity.galleryImages?.map((_, index) => (
                                     <motion.button
                                       key={index}
-                                      onClick={() => setCurrentImageIndex(index)}
+                                      onClick={() => activity.id === 2 ? setCurrentImageIndex(index) : setCurrentTEDxImageIndex(index)}
                                       whileHover={{ scale: 1.3 }}
                                       className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                                        index === currentImageIndex
+                                        index === (activity.id === 2 ? currentImageIndex : currentTEDxImageIndex)
                                           ? 'bg-purple-400 scale-125' 
                                           : 'bg-white/40 hover:bg-white/60'
                                       }`}
@@ -1017,7 +1049,7 @@ export default function Portfolio() {
 
                                 {/* Close Button */}
                                 <motion.button
-                                  onClick={handleNSDCFlip}
+                                  onClick={activity.id === 2 ? handleNSDCFlip : handleTEDxFlip}
                                   whileHover={{ scale: 1.1, boxShadow: "0 0 25px rgba(147, 51, 234, 0.6)" }}
                                   whileTap={{ scale: 0.9 }}
                                   className="self-end bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-full text-white hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-xl"
