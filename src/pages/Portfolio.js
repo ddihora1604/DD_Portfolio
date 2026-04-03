@@ -7,7 +7,6 @@ import {
   Github, 
   Linkedin,
   Instagram,
-  Twitter,
   Building,
   Calendar,
   MapPin,
@@ -237,7 +236,7 @@ const skillCategories = [
       { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
       { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
       { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
-      { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+      { name: "SQL", logo: "https://symbols.getvecta.com/stencil_27/81_sql-database.712f6a994f.svg" },
       { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
       { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" }
     ]
@@ -248,19 +247,21 @@ const skillCategories = [
       { name: "React.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
       { name: "Flask", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
-      { name: "LangChain", logo: "https://python.langchain.com/img/brand/wordmark.png" },
-      { name: "Streamlit", logo: "https://streamlit.io/images/brand/streamlit-mark-color.svg" }
+      { name: "LangChain", logo: "https://tusharad.github.io/langchain-hs/img/langchain.png" },
+      { name: "Streamlit", logo: "https://streamlit.io/images/brand/streamlit-mark-color.svg" },
+      { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
     ]
   },
   {
     name: "Specializations",
-    skills: ["AI/ML", "Deep Learning", "NLP", "Computer Vision", "Generative AI", "Data Analysis"]
+    skills: ["AI/ML", "Deep Learning", "NLP", "Computer Vision", "Generative AI", "Agentic AI", "Data Analysis", "DBMS", "UI/UX Design", "Web Development"]
   }
 ];
 
 export default function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState('home');
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isNSDCFlipped, setIsNSDCFlipped] = useState(false);
   const [isTEDxFlipped, setIsTEDxFlipped] = useState(false);
   const [isGDSCFlipped, setIsGDSCFlipped] = useState(false);
@@ -388,7 +389,7 @@ export default function Portfolio() {
     }, 13500); // Total: 10s Spline + 3s Progress + 0.5s transition = 13.5s
 
     const handleScroll = () => {
-      const sections = ['home', 'about', 'experience', 'projects', 'skills', 'extracurriculars', 'contact'];
+      const sections = ['home', 'about', 'resume', 'experience', 'projects', 'skills', 'extracurriculars', 'contact'];
       const scrollPosition = window.scrollY + window.innerHeight / 2;
 
       for (const sectionId of sections) {
@@ -472,7 +473,7 @@ export default function Portfolio() {
             </motion.div> */}
             
             <div className="hidden md:flex items-center space-x-8">
-              {['Home', 'About', 'Experience', 'Projects', 'Skills', 'Extra-Curriculars', 'Contact'].map((item) => (
+              {['Home', 'About', 'Resume', 'Experience', 'Projects', 'Skills', 'Extra-Curriculars', 'Contact'].map((item) => (
                 <motion.button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase().replace('-', ''))}
@@ -604,6 +605,169 @@ export default function Portfolio() {
                     transition={{ duration: 1, delay: 0.4 }}
                   >
                   </motion.div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Resume Section */}
+          <section id="resume" className="min-h-screen flex items-center justify-center py-20 bg-black/40 backdrop-blur-sm animate-section">
+            <div className="container mx-auto px-6 w-full">
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+              >
+                <div className="text-center mb-16">
+                  <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                    My <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Resume</span>
+                  </h2>
+                  {/* <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                    View my comprehensive resume to learn more about my qualifications and experience
+                  </p> */}
+                </div>
+
+                <div className="max-w-5xl mx-auto space-y-6">
+                  {/* Button Card */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    onClick={() => setIsResumeOpen(!isResumeOpen)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        setIsResumeOpen(!isResumeOpen);
+                      }
+                    }}
+                  >
+                    <motion.div
+                      whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(99, 102, 241, 0.4)" }}
+                      whileTap={{ scale: 0.98 }}
+                      className="relative w-full bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-white/10 rounded-3xl p-12 group overflow-hidden transition-all duration-300 hover:border-blue-400/60 cursor-pointer"
+                    >
+                      {/* Background decorative elements */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-blue-400/15 to-purple-500/15 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+                      <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-gradient-to-br from-purple-400/10 to-pink-500/10 rounded-full blur-lg group-hover:scale-125 transition-transform duration-700" />
+                      
+                      <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between text-center sm:text-left pointer-events-none">
+                        <div className="flex items-center gap-6 flex-1">
+                          {/* Resume Icon */}
+                          <motion.div
+                            animate={{ y: [0, -5, 0] }}
+                            transition={{ duration: 2, repeat: Infinity }}
+                            className="p-4 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-2xl border border-blue-400/30 flex-shrink-0"
+                          >
+                            <svg className="w-12 h-12 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2H4a1 1 0 110-2V4z" />
+                              <path fillRule="evenodd" d="M6 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm0 3a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm0 3a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1z" clipRule="evenodd" />
+                            </svg>
+                          </motion.div>
+                          
+                          <div>
+                            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                              {isResumeOpen ? 'Hide Resume' : 'View My Resume'}
+                            </h3>
+                            <p className="text-white/70 text-sm mt-1">
+                              {isResumeOpen ? 'Click to collapse' : 'Click to expand preview'}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Chevron Icon */}
+                        <motion.div
+                          animate={{ rotate: isResumeOpen ? 180 : 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="flex-shrink-0"
+                        >
+                          <svg className="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          </svg>
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Expandable Resume Preview */}
+                  <AnimatePresence>
+                    {isResumeOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0, y: -20 }}
+                        animate={{ opacity: 1, height: 'auto', y: 0 }}
+                        exit={{ opacity: 0, height: 0, y: -20 }}
+                        transition={{ duration: 0.4 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
+                          {/* Resume Viewer */}
+                          <div className="rounded-xl overflow-hidden bg-white mb-6">
+                            <iframe
+                              src="/02_Darshan_Dihora_Resume.pdf#toolbar=1&navpanes=0&scrollbar=1"
+                              width="100%"
+                              height="600px"
+                              style={{ border: 'none', borderRadius: '0.75rem' }}
+                              title="Resume Preview"
+                            />
+                          </div>
+
+                          {/* Action Buttons */}
+                          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <motion.a
+                              href="/02_Darshan_Dihora_Resume.pdf"
+                              download="02_Darshan_Dihora_Resume.pdf"
+                              className="px-8 py-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-lg text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all duration-300"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                              </svg>
+                              Download Full Resume
+                            </motion.a>
+
+                            {/* <motion.button
+                              onClick={() => setIsResumeOpen(false)}
+                              className="px-8 py-3 border border-white/40 rounded-lg text-white font-semibold flex items-center justify-center gap-2 hover:border-white transition-all duration-300"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                              Collapse
+                            </motion.button> */}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Quick Info Cards */}
+                  {!isResumeOpen && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+                    >
+                      {/* <div className="bg-gradient-to-br from-blue-500/10 to-blue-400/5 border border-blue-400/30 rounded-2xl p-6 text-center">
+                        <p className="text-white/70 text-sm mb-2">Format</p>
+                        <p className="text-white font-semibold">PDF Document</p>
+                      </div>
+                      <div className="bg-gradient-to-br from-purple-500/10 to-purple-400/5 border border-purple-400/30 rounded-2xl p-6 text-center">
+                        <p className="text-white/70 text-sm mb-2">Size</p>
+                        <p className="text-white font-semibold">Portable & Light</p>
+                      </div>
+                      <div className="bg-gradient-to-br from-pink-500/10 to-pink-400/5 border border-pink-400/30 rounded-2xl p-6 text-center">
+                        <p className="text-white/70 text-sm mb-2">Quick Action</p>
+                        <p className="text-white font-semibold">Download Anytime</p>
+                      </div> */}
+                    </motion.div>
+                  )}
                 </div>
               </motion.div>
             </div>
@@ -1384,17 +1548,19 @@ export default function Portfolio() {
                         href="https://x.com/ddihora1604"
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-4 text-white/70 hover:text-blue-300 transition-all duration-300 group"
+                        className="flex items-center space-x-4 text-white/70 hover:text-white transition-all duration-300 group"
                         whileHover={{ scale: 1.05, x: 10 }}
                         whileTap={{ scale: 0.95 }}
                       >
                         <motion.div
-                          className="p-3 rounded-xl bg-white/5 group-hover:bg-blue-300/20 transition-all duration-300"
+                          className="p-3 rounded-xl bg-white/5 group-hover:bg-white/20 transition-all duration-300"
                           whileHover={{ rotate: 15 }}
                         >
-                          <Twitter className="w-6 h-6" />
+                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.6l-5.165-6.75-5.904 6.75h-3.315l7.73-8.835L.424 2.25h6.7l4.671 6.18 5.719-6.18zM17.15 20.205h1.828L6.883 4.196H5.017l12.133 16.009z" />
+                          </svg>
                         </motion.div>
-                        <span className="text-lg">Twitter (X)</span>
+                        <span className="text-lg">X</span>
                       </motion.a>
                     </div>
                   </div>
@@ -1404,7 +1570,7 @@ export default function Portfolio() {
           </section>
 
           {/* Footer */}
-          <footer className="py-12 border-t border-white/10 backdrop-blur-sm bg-black/40">
+          {/* <footer className="py-12 border-t border-white/10 backdrop-blur-sm bg-black/40">
             <div className="container mx-auto px-6">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -1418,7 +1584,7 @@ export default function Portfolio() {
                 </p>
               </motion.div>
             </div>
-          </footer>
+          </footer> */}
           </motion.div>
         )}
       </AnimatePresence>
