@@ -58,6 +58,9 @@ import Trinity3 from "../assets/images/Trinity_3.jpg";
 // Import NOVA gallery images
 import NOVA1 from "../assets/images/NOVA_1.jpg";
 
+// Import project images
+import DataSentinelImage from "../assets/images/DataSentinel.png";
+
 import IITKLogo from "../assets/images/IITK.png";
 import IITPLogo from "../assets/images/IITP.png";
 
@@ -86,8 +89,8 @@ const projects = [
     id: 3,
     title: "DataSentinel",
     subtitle: "White-Box LLMOps Framework for PII Redaction in Secure RAG",
-    description: "Developed a white-box framework that embeds multi-stage Personally Identifiable Information (PII) redaction using regex patterns and NER, adversarial input validation against prompt injection/jailbreak/exfiltration attempts, and real-time Prometheus-Grafana observability into a secure RAG pipeline. Achieved zero data leakage across 6 PII entity types, P95 latency <10s, and 95% query allowance rate on a simulated enterprise customer-support database.",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/DataSentinel.jpg",
+    description: "Developed a white-box framework that embeds multi-stage Personally Identifiable Information (PII) redaction using regex patterns and NER, adversarial input validation against prompt injection/jailbreak/exfiltration attempts, and real-time Prometheus-Grafana observability into a secure RAG pipeline. It achieved zero data leakage across 6 PII entity types, P95 latency <10s, and 95% query allowance rate on a simulated enterprise customer-support database.",
+    image: DataSentinelImage,
     tech: ["FAISS", "LangChain", "Streamlit", "FastAPI", "Python", "Ollama", "Prometheus", "Grafana", "Docker"],
     link: "https://github.com/ddihora1604/FINAL_year_project",
     date: "August 2025 - Present"
@@ -255,7 +258,7 @@ const skillCategories = [
       { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
       { name: "Prometheus", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" },
       { name: "Grafana", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" },
-      { name: "PowerBI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg" },
+      { name: "PowerBI", logo: "https://commons.wikimedia.org/wiki/Special:FilePath/New_Power_BI_Logo.svg" },
       { name: "Tableau", logo: "https://img.icons8.com/color/480/000000/tableau-software.png" }
     ]
   },
@@ -532,7 +535,7 @@ export default function Portfolio() {
                   AI & Data Science Engineer
                 </h2>
                 
-                <p className="text-lg text-white/60 max-w-2xl mx-auto">
+                <p className="text-lg text-white/60 max-w-full mx-auto whitespace-nowrap overflow-hidden text-ellipsis">
                   Dedicated to building end-to-end AI solutions with real-world impacts in business and technology!
                 </p>
                 
