@@ -84,13 +84,13 @@ const projects = [
   },
   {
     id: 3,
-    title: "Agenix",
-    subtitle: "AI Agent Marketplace",
-    description: "Developed a marketplace that integrates various AI agents, including independent agents like Professional Email Writer, Document Summarizer, YouTube Summarizer, Web Crawler, Image Generator, and Blog Writer along with a Job Agent, Case Study Agent and a Deep Research Agent, combined into custom workflows.",
-    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/8f218f516_Agenix.jpg",
-    tech: ["Crew AI", "FluxAI", "FAISS", "Langflow", "Next.js", "Python", "LangChain", "Gemini", "Llama"],
-    link: "https://github.com/ddihora1604/Agenix",
-    date: "March 2025"
+    title: "DataSentinel",
+    subtitle: "White-Box LLMOps Framework for PII Redaction in Secure RAG",
+    description: "Developed a white-box framework that embeds multi-stage Personally Identifiable Information (PII) redaction using regex patterns and NER, adversarial input validation against prompt injection/jailbreak/exfiltration attempts, and real-time Prometheus-Grafana observability into a secure RAG pipeline. Achieved zero data leakage across 6 PII entity types, P95 latency <10s, and 95% query allowance rate on a simulated enterprise customer-support database.",
+    image: "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/DataSentinel.jpg",
+    tech: ["FAISS", "LangChain", "Streamlit", "FastAPI", "Python", "Ollama", "Prometheus", "Grafana", "Docker"],
+    link: "https://github.com/ddihora1604/FINAL_year_project",
+    date: "August 2025 - Present"
   },
   {
     id: 4,
@@ -112,7 +112,7 @@ const experiences = [
     duration: "March 2025 - August 2025",
     location: "Kharagpur, India",
     description: [
-      "Researching and analyzing key ESG (Environmental, Social, Governance indicators) metrics and their impact on stock performance and market behavior. Training ML models (like Chronos and KNN) on financial datasets to extract insights from ESG disclosures.",
+      "Researched and analyzed key ESG (Environmental, Social, Governance indicators) metrics and their impact on stock performance and market behavior. Training ML models (like Chronos and KNN) on financial datasets to extract insights from ESG disclosures.",
       "Performed a comprehensive analysis of tokenization techniques used in large language models, comparing methods like BPE, WordPiece, and SentencePiece. Analyzed challenges in tokenizing temporal and numeric data and explored solutions like Digit-Aware Tokenizers, Prompt Tuning, and Model Grafting."
     ]
   },
@@ -249,12 +249,19 @@ const skillCategories = [
       { name: "Flask", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" },
       { name: "LangChain", logo: "https://tusharad.github.io/langchain-hs/img/langchain.png" },
       { name: "Streamlit", logo: "https://streamlit.io/images/brand/streamlit-mark-color.svg" },
-      { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" }
+      { name: "Ollama", logo: "https://ollama.ai/public/ollama.png" },
+      { name: "Supabase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
+      { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" },
+      { name: "MySQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+      { name: "Prometheus", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg" },
+      { name: "Grafana", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg" },
+      { name: "PowerBI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/powerbi/powerbi-original.svg" },
+      { name: "Tableau", logo: "https://img.icons8.com/color/480/000000/tableau-software.png" }
     ]
   },
   {
     name: "Specializations",
-    skills: ["AI/ML", "Deep Learning", "NLP", "Computer Vision", "Generative AI", "Agentic AI", "Data Analysis", "DBMS", "UI/UX Design", "Web Development"]
+    skills: ["Artificial Intelligence", "Machine Learning", "Deep Learning", "Natural Language Processing", "Computer Vision", "Generative AI", "Agentic AI", "Large Language Models", "Retrieval-Augmented Generation", "Data Analysis"]
   }
 ];
 
@@ -522,11 +529,11 @@ export default function Portfolio() {
                 </h1>
                 
                 <h2 className="text-3xl md:text-4xl text-white/80">
-                  AI Enthusiast
+                  AI & Data Science Engineer
                 </h2>
                 
                 <p className="text-lg text-white/60 max-w-2xl mx-auto">
-                  Dedicated to learning and exploring in the world of business and technology!
+                  Dedicated to building end-to-end AI solutions with real-world impacts in business and technology!
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -591,10 +598,10 @@ export default function Portfolio() {
                       About <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Me</span>
                     </h2>
                     <p className="text-lg text-white/70 leading-relaxed mb-4 group-hover:text-white/90 group-hover:drop-shadow-[0_0_10px_rgba(99,102,241,0.4)] transition-all duration-500">
-                      I'm a passionate B.Tech student specializing in Artificial Intelligence (AI) and Data Science, with a minor in IoT and Industry 4.0, at SVKM's Dwarkadas J. Sanghvi College of Engineering, Mumbai, India.
+                      I am a passionate B. Tech student specializing in Artificial Intelligence (AI) and Data Science, with a minor in IoT and Industry 4.0 at SVKM’s Dwarkadas J. Sanghvi College of Engineering.
                     </p>
                     <p className="text-lg text-white/70 leading-relaxed mb-8 group-hover:text-white/90 group-hover:drop-shadow-[0_0_10px_rgba(99,102,241,0.4)] transition-all duration-500">
-                      I specialize in creating cutting-edge AI solutions, while actively building skills in AI, ML, data science, finance, UI/UX design, and web development.
+                      I am dedicated to building end-to-end AI solutions with real-world impacts in business and technology, while actively developing skills in AI, ML, data science, finance, UI/UX design, and web development. I transform complex problems in AI/ML, data science, and financial data analytics into practical, production-ready applications. My focus areas include generative AI, agentic systems, machine learning, and financial data analysis.
                     </p>
                   </motion.div>
                   
@@ -706,7 +713,7 @@ export default function Portfolio() {
                           {/* Resume Viewer */}
                           <div className="rounded-xl overflow-hidden bg-white mb-6">
                             <iframe
-                              src="/02_Darshan_Dihora_Resume.pdf#toolbar=1&navpanes=0&scrollbar=1"
+                              src="/01_Darshan_Dihora_Resume.pdf#toolbar=1&navpanes=0&scrollbar=1"
                               width="100%"
                               height="600px"
                               style={{ border: 'none', borderRadius: '0.75rem' }}
@@ -717,8 +724,8 @@ export default function Portfolio() {
                           {/* Action Buttons */}
                           <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <motion.a
-                              href="/02_Darshan_Dihora_Resume.pdf"
-                              download="02_Darshan_Dihora_Resume.pdf"
+                              href="/01_Darshan_Dihora_Resume.pdf"
+                              download="01_Darshan_Dihora_Resume.pdf"
                               className="px-8 py-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-lg text-white font-semibold flex items-center justify-center gap-2 hover:shadow-lg transition-all duration-300"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
