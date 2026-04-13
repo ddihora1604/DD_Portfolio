@@ -535,7 +535,7 @@ export default function Portfolio() {
                   AI & Data Science Engineer
                 </h2>
                 
-                <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto px-4 leading-relaxed sm:leading-tight sm:whitespace-nowrap sm:overflow-hidden sm:text-ellipsis">
+                <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-4xl mx-auto px-4 leading-relaxed sm:leading-tight sm:whitespace-nowrap">
                   Developing end-to-end AI solutions with real-world impacts in business & technology!
                 </p>
                 
