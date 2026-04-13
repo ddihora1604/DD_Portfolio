@@ -535,7 +535,7 @@ export default function Portfolio() {
                   AI & Data Science Engineer
                 </h2>
                 
-                <p className="text-lg text-white/60 max-w-full mx-auto whitespace-nowrap overflow-hidden text-ellipsis">
+                <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto px-4 leading-relaxed">
                   Dedicated to building end-to-end AI solutions with real-world impacts in business and technology!
                 </p>
                 
@@ -574,10 +574,10 @@ export default function Portfolio() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                className="grid lg:grid-cols-2 gap-16 items-center"
+                className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center"
               >
                 <div className="relative group cursor-pointer">
-                  <div className="relative w-80 h-80 mx-auto">
+                  <div className="relative w-60 sm:w-72 md:w-80 h-60 sm:h-72 md:h-80 mx-auto">
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full opacity-75 blur-sm group-hover:opacity-100 group-hover:blur-md transition-all duration-500" />
                     <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 backdrop-blur-sm group-hover:border-blue-400/50 group-hover:shadow-2xl group-hover:shadow-blue-400/30 transition-all duration-500">
                       <img
@@ -597,13 +597,13 @@ export default function Portfolio() {
                     transition={{ duration: 1, delay: 0.2 }}
                     className="group cursor-pointer"
                   >
-                    <h2 className="text-4xl lg:text-5xl font-bold mb-6 group-hover:drop-shadow-[0_0_15px_rgba(99,102,241,0.6)] transition-all duration-500">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 group-hover:drop-shadow-[0_0_15px_rgba(99,102,241,0.6)] transition-all duration-500">
                       About <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Me</span>
                     </h2>
-                    <p className="text-lg text-white/70 leading-relaxed mb-4 group-hover:text-white/90 group-hover:drop-shadow-[0_0_10px_rgba(99,102,241,0.4)] transition-all duration-500">
+                    <p className="text-base sm:text-lg text-white/70 leading-relaxed mb-4 group-hover:text-white/90 group-hover:drop-shadow-[0_0_10px_rgba(99,102,241,0.4)] transition-all duration-500">
                       I am a passionate B. Tech student specializing in Artificial Intelligence (AI) and Data Science, with a minor in IoT and Industry 4.0 at SVKM’s Dwarkadas J. Sanghvi College of Engineering.
                     </p>
-                    <p className="text-lg text-white/70 leading-relaxed mb-8 group-hover:text-white/90 group-hover:drop-shadow-[0_0_10px_rgba(99,102,241,0.4)] transition-all duration-500">
+                    <p className="text-base sm:text-lg text-white/70 leading-relaxed mb-8 group-hover:text-white/90 group-hover:drop-shadow-[0_0_10px_rgba(99,102,241,0.4)] transition-all duration-500">
                       I am dedicated to building end-to-end AI solutions with real-world impacts in business and technology, while actively developing skills in AI, ML, data science, finance, UI/UX design, and web development. I transform complex problems in AI/ML, data science, and financial data analytics into practical, production-ready applications. My focus areas include generative AI, agentic systems, machine learning, and financial data analysis.
                     </p>
                   </motion.div>
@@ -630,7 +630,7 @@ export default function Portfolio() {
                 viewport={{ once: true }}
               >
                 <div className="text-center mb-16">
-                  <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
                     My <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Resume</span>
                   </h2>
                   {/* <p className="text-lg text-white/70 max-w-2xl mx-auto">
@@ -657,7 +657,7 @@ export default function Portfolio() {
                     <motion.div
                       whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(99, 102, 241, 0.4)" }}
                       whileTap={{ scale: 0.98 }}
-                      className="relative w-full bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-white/10 rounded-3xl p-12 group overflow-hidden transition-all duration-300 hover:border-blue-400/60 cursor-pointer"
+                      className="relative w-full bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 md:p-12 group overflow-hidden transition-all duration-300 hover:border-blue-400/60 cursor-pointer"
                     >
                       {/* Background decorative elements */}
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -679,10 +679,10 @@ export default function Portfolio() {
                           </motion.div>
                           
                           <div>
-                            <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                            <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                               {isResumeOpen ? 'Hide Resume' : 'View My Resume'}
                             </h3>
-                            <p className="text-white/70 text-sm mt-1">
+                            <p className="text-white/70 text-xs sm:text-sm mt-1">
                               {isResumeOpen ? 'Click to collapse' : 'Click to expand preview'}
                             </p>
                           </div>
@@ -813,7 +813,7 @@ export default function Portfolio() {
                   My <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Experience</span>
                 </h2>
                 
-                <p className="text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
                   Research and development journey at premier Indian institutes, 
                   driving innovation in AI, machine learning, and data science
                 </p>
@@ -834,7 +834,7 @@ export default function Portfolio() {
                 
 
                 {/* Parallel Cards Container */}
-                <div className="grid md:grid-cols-2 gap-12 mb-16 max-w-7xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-16 max-w-7xl mx-auto">
                   {experiences.map((experience, index) => (
                     <motion.div
                       key={experience.id}
@@ -856,7 +856,7 @@ export default function Portfolio() {
                           boxShadow: "0 25px 50px rgba(59, 130, 246, 0.2)"
                         }}
                         transition={{ duration: 0.3 }}
-                        className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-white/10 rounded-3xl p-8 group overflow-hidden h-full"
+                        className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-white/10 rounded-3xl p-6 sm:p-8 group overflow-hidden h-full"
                       >
                         {/* Animated background gradient */}
                         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -992,10 +992,10 @@ export default function Portfolio() {
                 transition={{ duration: 1 }}
                 className="text-center mb-16 animate-text"
               >
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
                   My <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Projects</span>
                 </h2>
-                <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
                   Innovative solutions across various domains of AI and data science
                 </p>
               </motion.div>
@@ -1023,7 +1023,7 @@ export default function Portfolio() {
                 transition={{ duration: 1 }}
                 className="text-center mb-16"
               >
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
                   Skills & <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Technologies</span>
                 </h2>
               </motion.div>
@@ -1100,10 +1100,10 @@ export default function Portfolio() {
                 transition={{ duration: 1 }}
                 className="text-center mb-16"
               >
-                <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
                   Extra Curricular <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Activities</span>
                 </h2>
-                <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
                   Managed committees and clubs, led initiatives, and created meaningful change through diverse leadership roles
                 </p>
               </motion.div>
@@ -1145,7 +1145,7 @@ export default function Portfolio() {
                         transition={{ duration: 0.3 }}
                         className={`relative w-full lg:w-5/12 ${index % 2 === 0 ? 'lg:mr-auto lg:pr-8' : 'lg:ml-auto lg:pl-8'} group`}
                       >
-                        <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-white/10 rounded-2xl p-8 overflow-hidden">
+                        <div className="relative bg-gradient-to-br from-gray-900/90 to-gray-800/90 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 overflow-hidden">
                           {/* Background Effects */}
                           <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                           <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
@@ -1447,10 +1447,10 @@ export default function Portfolio() {
                 className="max-w-4xl mx-auto animate-text"
               >
                 <div className="text-center mb-16">
-                  <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
                     Get In <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Touch</span>
                   </h2>
-                  <p className="text-lg text-white/70">
+                  <p className="text-base sm:text-lg text-white/70">
                     Ready to create something amazing together? Let's connect!
                   </p>
                 </div>
