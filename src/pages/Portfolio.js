@@ -536,7 +536,7 @@ export default function Portfolio() {
                 </h2>
                 
                 <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto px-4 leading-relaxed">
-                  Dedicated to building end-to-end AI solutions with real-world impacts in business and technology!
+                  Dedicated to building AI solutions with real-world impacts in business and technology!
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
