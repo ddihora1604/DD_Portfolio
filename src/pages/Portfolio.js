@@ -536,7 +536,7 @@ export default function Portfolio() {
                 </h2>
                 
                 <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto px-4 leading-relaxed">
-                  Dedicated to building AI solutions with real-world impacts in business and technology!
+                  Developing end-to-end AI solutions with real-world impacts in business & technology!
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
@@ -604,7 +604,7 @@ export default function Portfolio() {
                       I am a passionate B. Tech student specializing in Artificial Intelligence (AI) and Data Science, with a minor in IoT and Industry 4.0 at SVKM’s Dwarkadas J. Sanghvi College of Engineering.
                     </p>
                     <p className="text-base sm:text-lg text-white/70 leading-relaxed mb-8 group-hover:text-white/90 group-hover:drop-shadow-[0_0_10px_rgba(99,102,241,0.4)] transition-all duration-500">
-                      I am dedicated to building end-to-end AI solutions with real-world impacts in business and technology, while actively developing skills in AI, ML, data science, finance, UI/UX design, and web development. I transform complex problems in AI/ML, data science, and financial data analytics into practical, production-ready applications. My focus areas include generative AI, agentic systems, machine learning, and financial data analysis.
+                      I am dedicated to building end-to-end AI solutions with real-world impacts in business and technology, while actively developing skills in AI, machine learning, data science, finance, UI/UX design, and web development. I transform complex problems into practical, production-ready applications. My focus areas include generative AI, agentic systems, machine learning, and financial data analysis.
                     </p>
                   </motion.div>
                   
